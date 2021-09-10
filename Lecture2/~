@@ -1,0 +1,20 @@
+import java.awt.Color;
+
+class FilledCircle extends Circle {
+    private final Color color;
+
+    FilledCircle(double radius, Color color) {
+        //CALL PARENTS CLASS CONSTRUCTOR
+        //INVOKE PARENT'S CONSTRUCTOR
+        super(radius);
+        this.color = color;
+    }
+
+    FilledCircle fillColor (Color color) {
+        return new FilledCircle(super.radius, color);
+    }
+
+    public String toString() {
+        return "area " + String.format("%.2f", this.getArea()) + ", perimeter " + String.format("%.2f", this.getPerimeter()) + "," + this.color;
+    }
+}

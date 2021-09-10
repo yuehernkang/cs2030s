@@ -8,18 +8,21 @@ class Loader {
     }
 
     boolean canServe(Cruise cruise) {
-        if (this.cruise == null) {
+        if (this.cruise.getServiceCompletionTime() <= cruise.getServiceCompletionTime()) {
             return true;
         }
         return false;
     }
 
     Loader serve(Cruise cruise) {
-        return new Loader(this.identifier, cruise);
+        if (canServe(cruise)) {
+            return new Loader(this.identifier, cruise);
+        }
+        
     }
 
     int getNextAvailableTime() {
-        return 0;
+        return cruise.getServiceCompletionTime();
     }
 
     int getIdentifier() {

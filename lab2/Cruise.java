@@ -28,7 +28,7 @@ class Cruise {
         return arrivalTime;
     }
 
-    int getNumberOfLoadersRequired() {
+    int getNumOfLoadersRequired() {
         return this.numOfLoader;
     }
     
