@@ -12,8 +12,9 @@ class Loader {
     boolean canServe(Cruise cruise) {
         if (this.cruise.getServiceCompletionTime() <= cruise.getArrivalTime()) {
             return true;
-        }
+        } else {
         return false;
+        }
     }
 
     //serve method to serve a given cruise, if
@@ -30,7 +31,7 @@ class Loader {
     }
 
     int getNextAvailableTime() {
-        return cruise.getServiceCompletionTime();
+        return this.cruise.getServiceCompletionTime();
     }
 
     int getIdentifier() {
@@ -40,8 +41,4 @@ class Loader {
     public String toString() {
         return "Loader " + this.identifier + " serving " + this.cruise;
     }
-}
-
-class RecycledLoader extends Loader {
-    
 }

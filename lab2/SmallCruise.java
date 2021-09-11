@@ -10,7 +10,11 @@ class SmallCruise extends Cruise {
     private static final int LOADERS_REQUIRED = 1;
 
     SmallCruise(String identifier, int arrivalTime) {
-        super(identifier, arrivalTime, LOADERS_REQUIRED, TIME_TAKEN_FOR_LOADER);
+      super(identifier, arrivalTime, LOADERS_REQUIRED, TIME_TAKEN_FOR_LOADER);
+        
+      if (identifier.charAt(0) != 'S') {
+            throw new IllegalArgumentException("SMALL CRUISE NAME MUST START WITH S");    
+      } 
     }
 
 }
