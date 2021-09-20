@@ -13,6 +13,10 @@ class Circle {
         return Math.PI * this.radius * this.radius;
     }
 
+    boolean equals (Circle circle) {
+        return this.radius == circle.radius;
+    }
+
     double getPerimeter() { 
         return 2 * Math.PI * this.radius;
     }

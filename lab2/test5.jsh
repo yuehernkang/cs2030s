@@ -2,9 +2,9 @@
 /open SmallCruise.java
 /open BigCruise.java
 /open Loader.java
-/open level5.jsh
-Cruise[] cruises = {
-    new SmallCruise("S1111", 1300)}
+/open RecycledLoader.java
+/open level6.jsh
+Cruise[] cruises = {new SmallCruise("S1111", 1300)}
 serveCruises(cruises);
 Cruise[] cruises = {
     new BigCruise("B1111", 1300, 80, 3000),
@@ -21,3 +21,14 @@ Cruise[] cruises = {
     new SmallCruise("S0001", 1130)}
 serveCruises(cruises);
 /exit
+
+
+
+Cruise[] cruises = {
+        new BigCruise("B1111", 0, 60, 1500),
+        new SmallCruise("S1112", 0), 
+        new BigCruise("B1113", 30, 100, 1500),
+        new BigCruise("B1114", 100, 100, 1500),
+        new BigCruise("B1115", 130, 100, 1500),
+        new BigCruise("B1116", 200, 100, 1500)
+    }
