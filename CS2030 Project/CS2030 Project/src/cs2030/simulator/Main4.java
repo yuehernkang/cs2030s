@@ -1,13 +1,10 @@
-//package cs2030.simulator;
+package cs2030.simulator;
 
-import cs2030.simulator.Event;
-import cs2030.simulator.EventComparator;
-import cs2030.simulator.EventState;
-import cs2030.simulator.Simulator;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Scanner;
 
-import java.util.*;
-
-public class Main3 {
+public class Main4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -34,5 +31,4 @@ public class Main3 {
         s.simulate();
         sc.close();
     }
-
 }

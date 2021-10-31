@@ -6,23 +6,23 @@ public class Simulator {
     private final int numOfServers;
     private final PriorityQueue<Event> eventQueue;
     private final int maxQueueLength;
-    private final List<Double> restTimes;
+    private final LinkedList<Double> restTimes;
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = 1;
-        this.restTimes = new ArrayList<>();
+        this.restTimes = new LinkedList<>();
     }
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = maxQueueLength;
-        this.restTimes = new ArrayList<>();
+        this.restTimes = new LinkedList<>();
     }
 
-    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, List<Double> restTimes) {
+    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, LinkedList<Double> restTimes) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = maxQueueLength;

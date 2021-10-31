@@ -1,24 +1,25 @@
 package cs2030.simulator;
 
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Server {
     private final int id;
     private final ServerState state;
-    private final Queue<Event> waitingQueue;
+    private final LinkedList<Event> waitingQueue;
     private final double nextAvailableTime;
 
     //Simulator to create server
     public Server(int id) {
         this.id = id;
         this.state = ServerState.IDLE;
-        this.waitingQueue = new PriorityQueue<>(new EventComparator());
+        this.waitingQueue = new LinkedList<>();
         this.nextAvailableTime = 0;
     }
 
     //Server that start serving
-    public Server(int id, ServerState state, Queue<Event> waitingQueue, double nextAvailableTime) {
+    public Server(int id, ServerState state, LinkedList<Event> waitingQueue, double nextAvailableTime) {
         this.id = id;
         this.state = state;
         this.waitingQueue = waitingQueue;
@@ -46,7 +47,7 @@ public class Server {
         return this.waitingQueue.size();
     }
 
-    public Queue<Event> getQueue() {
+    public LinkedList<Event> getQueue() {
         return this.waitingQueue;
     }
 
@@ -61,7 +62,11 @@ public class Server {
     //customer time + service time = time when done
     //if time when done is less than the next customer time
     boolean canServe(double time) {
-        return this.nextAvailableTime <= time;
+        boolean result = false;
+        if(this.getServerState()!= ServerState.SERVING && this.nextAvailableTime <= time) {
+            result = true;
+        }
+        return result;
     }
 
 }

@@ -7,9 +7,9 @@ public class EventHandler {
     private final List<Server> serverList;
     private final List<Double> statisticsHandler;
     private final int maxQueueLength;
-    private final List<Double> restTimes;
+    private final LinkedList<Double> restTimes;
 
-    public EventHandler(Event event, List<Server> serverList, List<Double> statisticsHandler, int maxQueueLength, List<Double> restTimes) {
+    public EventHandler(Event event, List<Server> serverList, List<Double> statisticsHandler, int maxQueueLength, LinkedList<Double> restTimes) {
         this.event = event;
         this.serverList = serverList;
         this.statisticsHandler = statisticsHandler;
@@ -27,20 +27,16 @@ public class EventHandler {
 
     Event handleDoneEvent() {
         /*DONE EVENT
-        0.5. Give server specified rest time
-        1. Release Server
-        2. Create new serve event for waiting customer at current time
+        1. Give server specified rest time
+        2. Release Server
+        3. Create new serve event for waiting customer at current time
          */
         int serverIndex = event.getServerId() - 1;
         double restTime = 0;
         Event e1 = this.serverList.get(serverIndex).getQueue().peek();
         Event e;
         if(!this.restTimes.isEmpty()){
-            restTime = this.restTimes.get(event.getId() - 1);
-        }
-        if(event.getTime()==10.780954 && event.getId() == 9 && event.get){
-            restTime = this.restTimes.get(event.getId() - 2);
-
+            restTime = this.restTimes.poll();
         }
 
         //There is people waiting for this server
@@ -60,7 +56,7 @@ public class EventHandler {
     Event handleServeEvent() {
         //Increment number of customers served
         statisticsHandler.set(1, statisticsHandler.get(1) + 1);
-        Queue<Event> q;
+        LinkedList<Event> q;
         Server s;
         //If there was someone in the queue
         if (this.serverList.get(event.getServerId() - 1).getQueueSize() != 0) {
@@ -70,49 +66,53 @@ public class EventHandler {
             s = new Server(event.getServerId(), ServerState.SERVING, q, event.getServiceCompletionTime());
             serverList.set(event.getServerId() - 1, s);
         }
-//        s = new Server(event.getServerId(), ServerState.IDLE, this.serverList.get(event.getServerId()).getQueueSize(), event.getServiceCompletionTime());
-//        serverList.set(event.getServerId() - 1, s);
         Event nextEvent = new Event(event.getId(), event.getServiceCompletionTime(), event.getServerId(), EventState.DONE, event.getServiceTime());
         return nextEvent;
     }
 
     Event handleArrivalEvent() {
+        int serverIndex = getFreeServer();
         Event nextEvent;
-        Optional<Server> s = getFreeServer();
 
         //THERE IS AVAILABLE SERVER
-        if (s.isPresent()) {
-            Server s1 = new Server(s.get().getId(), ServerState.SERVING, s.get().getQueue(), event.getServiceCompletionTime());
-            nextEvent = new Event(event.getId(), event.getTime(), s.get().getId(), EventState.SERVE, event.getServiceTime());
-            serverList.set(s.get().getId() - 1, s1);
+        if (serverIndex != -1) {
+            Server s = this.serverList.get(serverIndex);
+            Server s1 = new Server(s.getId(), ServerState.SERVING, s.getQueue(), event.getServiceCompletionTime());
+            nextEvent = new Event(event.getId(), event.getTime(), s.getId(), EventState.SERVE, event.getServiceTime());
+            serverList.set(s.getId() - 1, s1);
         } else {
             //NO AVAILABLE SERVER, NEED TO ADD TO SERVER QUEUE IF NOT AT <MAX QUEUE> LENGTH
             Server earliestAvailableServer = getEarliestAvailableServer();
             //LEAVE IF THERE IS ALREADY <MAX QUEUE> IN THE QUEUE
-            if (earliestAvailableServer.getQueueSize() >= this.maxQueueLength) {
+            if(earliestAvailableServer.getId() != 0){
+                if (earliestAvailableServer.getQueueSize() >= this.maxQueueLength) {
+                    this.statisticsHandler.set(2, this.statisticsHandler.get(2) + 1);
+                    nextEvent = new Event(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event.getServiceTime());
+                } else {
+                    //ADD TO EARLIEST SERVER'S QUEUE
+                    nextEvent = new Event(event.getId(), event.getTime(), earliestAvailableServer.getId(), EventState.WAIT, event.getServiceTime());
+                    LinkedList<Event> eventQueue = new LinkedList<>(earliestAvailableServer.getQueue());
+                    eventQueue.add(nextEvent);
+                    Server newServer = new Server(earliestAvailableServer.getId(), earliestAvailableServer.getServerState(), eventQueue, earliestAvailableServer.getNextAvailableTime() + event.getServiceTime());
+                    serverList.set(earliestAvailableServer.getId() - 1, newServer);
+                }
+            }else {
                 this.statisticsHandler.set(2, this.statisticsHandler.get(2) + 1);
                 nextEvent = new Event(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event.getServiceTime());
-            } else {
-                //ADD TO EARLIEST SERVER'S QUEUE
-                nextEvent = new Event(event.getId(), event.getTime(), earliestAvailableServer.getId(), EventState.WAIT, event.getServiceTime());
-                Queue<Event> eventQueue = new PriorityQueue<>(earliestAvailableServer.getQueue());
-                eventQueue.add(nextEvent);
-                Server newServer = new Server(earliestAvailableServer.getId(), earliestAvailableServer.getServerState(), eventQueue, earliestAvailableServer.getNextAvailableTime() + event.getServiceTime());
-                serverList.set(earliestAvailableServer.getId() - 1, newServer);
             }
         }
         return nextEvent;
     }
 
-    Optional<Server> getFreeServer() {
-        Optional<Server> result = Optional.empty();
+    int getFreeServer() {
+        int serverId = -1;
         for (Server s : serverList) {
             if (s.canServe(event.getTime())) {
-                result = Optional.of(s);
+                serverId = s.getId() -1;
                 break;
             }
         }
-        return result;
+        return serverId;
     }
 
     Server getEarliestAvailableServer() {
