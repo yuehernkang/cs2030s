@@ -8,13 +8,15 @@ public class EventHandler {
     private final List<Double> statisticsHandler;
     private final int maxQueueLength;
     private final LinkedList<Double> restTimes;
+    private final int numOfSelfCheckoutCounters;
 
-    public EventHandler(Event event, List<Server> serverList, List<Double> statisticsHandler, int maxQueueLength, LinkedList<Double> restTimes) {
+    public EventHandler(Event event, List<Server> serverList, List<Double> statisticsHandler, int maxQueueLength, LinkedList<Double> restTimes, int numOfSelfCheckoutCounters) {
         this.event = event;
         this.serverList = serverList;
         this.statisticsHandler = statisticsHandler;
         this.maxQueueLength = maxQueueLength;
         this.restTimes = restTimes;
+        this.numOfSelfCheckoutCounters = numOfSelfCheckoutCounters;
     }
 
     Event handleEvent() {
@@ -73,6 +75,7 @@ public class EventHandler {
     Event handleArrivalEvent() {
         int serverIndex = getFreeServer();
         Event nextEvent;
+        int maxSelfCheckoutCounters = this.serverList.size() + this.numOfSelfCheckoutCounters;
 
         //THERE IS AVAILABLE SERVER
         if (serverIndex != -1) {

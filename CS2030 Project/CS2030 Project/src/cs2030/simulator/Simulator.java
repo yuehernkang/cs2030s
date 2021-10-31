@@ -7,12 +7,14 @@ public class Simulator {
     private final PriorityQueue<Event> eventQueue;
     private final int maxQueueLength;
     private final LinkedList<Double> restTimes;
+    private final int numOfSelfCheckoutCounters;
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = 1;
         this.restTimes = new LinkedList<>();
+        this.numOfSelfCheckoutCounters = 0;
     }
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength) {
@@ -20,13 +22,15 @@ public class Simulator {
         this.eventQueue = eventQueue;
         this.maxQueueLength = maxQueueLength;
         this.restTimes = new LinkedList<>();
+        this.numOfSelfCheckoutCounters = 0;
     }
 
-    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, LinkedList<Double> restTimes) {
+    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, LinkedList<Double> restTimes, int numOfSelfCheckoutCounters) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = maxQueueLength;
         this.restTimes = restTimes;
+        this.numOfSelfCheckoutCounters = numOfSelfCheckoutCounters;
     }
 
     public void simulate() {
@@ -36,7 +40,7 @@ public class Simulator {
         while (!this.eventQueue.isEmpty()) {
             Event event = this.eventQueue.poll();
             System.out.println(event);
-            EventHandler eventHandler = new EventHandler(event, serverList, statisticsHandler, this.maxQueueLength, this.restTimes);
+            EventHandler eventHandler = new EventHandler(event, serverList, statisticsHandler, this.maxQueueLength, this.restTimes, this.numOfSelfCheckoutCounters);
             Event latestEvent = eventHandler.handleEvent();
             if(latestEvent.getEventState() != EventState.FINISH){
                 eventQueue.add(latestEvent);

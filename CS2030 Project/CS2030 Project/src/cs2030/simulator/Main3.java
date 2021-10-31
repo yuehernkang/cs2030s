@@ -1,9 +1,9 @@
-//package cs2030.simulator;
+package cs2030.simulator;
 
-import cs2030.simulator.Event;
-import cs2030.simulator.EventComparator;
-import cs2030.simulator.EventState;
-import cs2030.simulator.Simulator;
+//import cs2030.simulator.Event;
+//import cs2030.simulator.EventComparator;
+//import cs2030.simulator.EventState;
+//import cs2030.simulator.Simulator;
 
 import java.util.*;
 
@@ -30,7 +30,7 @@ public class Main3 {
             restTime.add(sc.nextDouble());
         }
 
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime);
+        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, 0);
         s.simulate();
         sc.close();
     }

@@ -8,7 +8,9 @@ public class Main4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        //number of servers, the number of self-checkout counters, the maximum queue length and the number of customers N
         int numOfServers = sc.nextInt();
+        int numOfSelfCheckoutCounters = sc.nextInt();
         int maxQueueLength = sc.nextInt();
         int numOfCustomers = sc.nextInt();
 
@@ -27,7 +29,7 @@ public class Main4 {
             restTime.add(sc.nextDouble());
         }
 
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime);
+        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, numOfSelfCheckoutCounters);
         s.simulate();
         sc.close();
     }
