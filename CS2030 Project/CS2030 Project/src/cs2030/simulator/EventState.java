@@ -6,4 +6,5 @@ public enum EventState {
     WAIT,
     DONE,
     LEAVE,
+    FINISH,
 }

@@ -1,3 +1,3 @@
 interface Cloneable {
-    Face clone();
+    public Object clone();
 }

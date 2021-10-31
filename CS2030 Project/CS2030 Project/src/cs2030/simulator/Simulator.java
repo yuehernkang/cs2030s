@@ -9,17 +9,27 @@ public class Simulator {
     private final int numOfServers;
     private final PriorityQueue<Event> eventQueue;
     private final int maxQueueLength;
+    private final ArrayList<Double> restTimes;
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = 1;
+        this.restTimes = new ArrayList<>();
     }
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = maxQueueLength;
+        this.restTimes = new ArrayList<>();
+    }
+
+    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, ArrayList<Double> restTimes) {
+        this.numOfServers = numOfServers;
+        this.eventQueue = eventQueue;
+        this.maxQueueLength = maxQueueLength;
+        this.restTimes = restTimes;
     }
 
     public void simulate() {
@@ -29,12 +39,10 @@ public class Simulator {
         while (!this.eventQueue.isEmpty()) {
             Event event = this.eventQueue.poll();
             System.out.println(event);
-            EventHandler eventHandler = new EventHandler(event, serverList, statisticsHandler, this.maxQueueLength);
-            List<Event> latestEvent = eventHandler.handleEvent();
-            for (Event e : latestEvent) {
-                if (e != null) {
-                    eventQueue.add(e);
-                }
+            EventHandler eventHandler = new EventHandler(event, serverList, statisticsHandler, this.maxQueueLength, this.restTimes);
+            Event latestEvent = eventHandler.handleEvent();
+            if(latestEvent.getEventState() != EventState.FINISH){
+                eventQueue.add(latestEvent);
             }
         }
         System.out.println("[" + String.format("%.3f", statisticsHandler.get(0) / statisticsHandler.get(1)) + " " + statisticsHandler.get(1).intValue()

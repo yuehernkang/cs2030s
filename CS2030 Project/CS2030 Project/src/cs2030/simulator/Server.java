@@ -1,7 +1,5 @@
 package cs2030.simulator;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -15,7 +13,7 @@ public class Server {
     public Server(int id) {
         this.id = id;
         this.state = ServerState.IDLE;
-        this.waitingQueue = new PriorityQueue<>();
+        this.waitingQueue = new PriorityQueue<>(new EventComparator());
         this.nextAvailableTime = 0;
     }
 
@@ -36,13 +34,12 @@ public class Server {
     }
 
     public double getNextAvailableTime() {
-        double time = nextAvailableTime;
-        if(!this.waitingQueue.isEmpty()){
-            for(Event e: this.waitingQueue){
-                time += e.getTime();
-            }
-        }
-        return time;
+//        double newTime = 0;
+//        for (int i = 0; i < getQueueSize(); i++) {
+//            newTime = currentTime + this.getQueue().poll().getServiceTime();
+//        }
+//        return newTime;
+        return nextAvailableTime;
     }
 
     public int getQueueSize() {
@@ -50,18 +47,21 @@ public class Server {
     }
 
     public Queue<Event> getQueue() {
-        return waitingQueue;
+        return this.waitingQueue;
     }
 
     public Server releaseServer() {
         return new Server(this.id, ServerState.IDLE, this.waitingQueue, this.nextAvailableTime);
     }
+    public Server releaseServer(double restTime) {
+        return new Server(this.id, ServerState.IDLE, this.waitingQueue, this.nextAvailableTime + restTime);
+    }
 
     //Check if this server can serve the next customer
     //customer time + service time = time when done
     //if time when done is less than the next customer time
-    boolean canServe() {
-        return this.state != ServerState.SERVING;
+    boolean canServe(double time) {
+        return this.nextAvailableTime <= time;
     }
 
 }
