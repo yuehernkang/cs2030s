@@ -1,6 +1,8 @@
 public class RubikFront extends Rubik {
     private static final int ARRAY_SIZE = 3;
     private static final int ARRAY_SIZE_6 = 6;
+
+
     RubikFront(int[][][] grid) {
         super(grid);
     }
@@ -15,6 +17,13 @@ public class RubikFront extends Rubik {
             }
         }
         return new RubikFront(newGrid);
+    }
+
+
+    @Override
+    public Rubik left() {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

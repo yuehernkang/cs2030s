@@ -6,6 +6,7 @@ import cs2030.simulator.EventState;
 import cs2030.simulator.Simulator;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class Main3 {
 
         sc.nextLine();
         PriorityQueue<Event> eventQueue = new PriorityQueue<>(new EventComparator());
-        ArrayList<Double> restTime = new ArrayList<>();
+        List<Double> restTime = new ArrayList<>();
 
         int loopIndex = 0;
 

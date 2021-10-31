@@ -1,15 +1,12 @@
 package cs2030.simulator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Arrays;
+import java.util.*;
 
 public class Simulator {
     private final int numOfServers;
     private final PriorityQueue<Event> eventQueue;
     private final int maxQueueLength;
-    private final ArrayList<Double> restTimes;
+    private final List<Double> restTimes;
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue) {
         this.numOfServers = numOfServers;
@@ -25,7 +22,7 @@ public class Simulator {
         this.restTimes = new ArrayList<>();
     }
 
-    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, ArrayList<Double> restTimes) {
+    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, List<Double> restTimes) {
         this.numOfServers = numOfServers;
         this.eventQueue = eventQueue;
         this.maxQueueLength = maxQueueLength;

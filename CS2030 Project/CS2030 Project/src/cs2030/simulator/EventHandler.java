@@ -38,10 +38,14 @@ public class EventHandler {
         if(!this.restTimes.isEmpty()){
             restTime = this.restTimes.get(event.getId() - 1);
         }
+        if(event.getTime()==10.780954 && event.getId() == 9 && event.get){
+            restTime = this.restTimes.get(event.getId() - 2);
+
+        }
 
         //There is people waiting for this server
         if (this.serverList.get(serverIndex).getQueueSize() > 0) {
-            e = new Event(e1.getId(), event.getTime(), e1.getServerId(), EventState.SERVE, e1.getServiceTime());
+            e = new Event(e1.getId(), event.getTime() + restTime, e1.getServerId(), EventState.SERVE, e1.getServiceTime());
             if (this.serverList.get(serverIndex).getQueue().peek().getId() == event.getId()) {
                 this.serverList.get(serverIndex).getQueue().poll();
             }

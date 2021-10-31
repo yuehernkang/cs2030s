@@ -2,7 +2,13 @@ abstract class Rubik implements Cloneable {
     int[][][] grid = new int[ARRAY_SIZE_6][ARRAY_SIZE][ARRAY_SIZE];
     private static final int ARRAY_SIZE = 3;
     private static final int ARRAY_SIZE_6 = 6;
-    
+    private static final int TOP = 0;
+    private static final int LEFT = 1;
+    private static final int FRONT = 2;
+    private static final int RIGHT = 3;
+    private static final int DOWN = 4;
+    private static final int BACK = 5;
+
     Rubik(int[][][] newGrid) {
         this.grid = newGrid;
     }
@@ -12,7 +18,7 @@ abstract class Rubik implements Cloneable {
     public abstract Rubik left();
 
     public String toString() {
-        String output = "";
+        String output = "\n";
         String dots = "......";
         for(int i = 0; i < 6; i++) {
             if((i == 0 || i == 4 || i == 5)) {
