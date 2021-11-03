@@ -66,8 +66,20 @@ public class Event {
                 statement = String.format("%.3f", this.time) + " " + this.id + " serves by server " + this.getServerId();
                 break;
             }
+            case SERVEBYSELFCHECKOUT: {
+                statement = String.format("%.3f", this.time) + " " + this.id + " serves by self-check " + this.getServerId();
+                break;
+            }
             case WAIT: {
                 statement = String.format("%.3f", this.time) + " " + this.id + " waits at server " + this.getServerId();
+                break;
+            }
+            case WAITSELFCHECKOUT: {
+                statement = String.format("%.3f", this.time) + " " + this.id + " waits at self-check " + this.getServerId();
+                break;
+            }
+            case DONESELFCHECKOUT: {
+                statement = String.format("%.3f", this.time) + " " + this.id + " done serving by self-check " + this.getServerId();
                 break;
             }
             case DONE: {

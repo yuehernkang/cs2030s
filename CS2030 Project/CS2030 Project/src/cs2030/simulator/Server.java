@@ -7,6 +7,7 @@ import java.util.Queue;
 public class Server {
     private final int id;
     private final ServerState state;
+    private final ServerType serverType;
     private final LinkedList<Event> waitingQueue;
     private final double nextAvailableTime;
 
@@ -14,14 +15,23 @@ public class Server {
     public Server(int id) {
         this.id = id;
         this.state = ServerState.IDLE;
+        this.serverType = ServerType.HUMAN;
+        this.waitingQueue = new LinkedList<>();
+        this.nextAvailableTime = 0;
+    }
+    public Server(int id, ServerType serverType) {
+        this.id = id;
+        this.state = ServerState.IDLE;
+        this.serverType = serverType;
         this.waitingQueue = new LinkedList<>();
         this.nextAvailableTime = 0;
     }
 
     //Server that start serving
-    public Server(int id, ServerState state, LinkedList<Event> waitingQueue, double nextAvailableTime) {
+    public Server(int id, ServerState state, ServerType serverType, LinkedList<Event> waitingQueue, double nextAvailableTime) {
         this.id = id;
         this.state = state;
+        this.serverType = serverType;
         this.waitingQueue = waitingQueue;
         this.nextAvailableTime = nextAvailableTime;
     }
@@ -43,6 +53,10 @@ public class Server {
         return nextAvailableTime;
     }
 
+    public ServerType getServerType() {
+        return serverType;
+    }
+
     public int getQueueSize() {
         return this.waitingQueue.size();
     }
@@ -51,11 +65,8 @@ public class Server {
         return this.waitingQueue;
     }
 
-    public Server releaseServer() {
-        return new Server(this.id, ServerState.IDLE, this.waitingQueue, this.nextAvailableTime);
-    }
     public Server releaseServer(double restTime) {
-        return new Server(this.id, ServerState.IDLE, this.waitingQueue, this.nextAvailableTime + restTime);
+        return new Server(this.id, ServerState.IDLE, this.serverType, this.waitingQueue, this.nextAvailableTime + restTime);
     }
 
     //Check if this server can serve the next customer

@@ -63,11 +63,16 @@ public class Simulator {
         return statisticsHandler;
     }
 
+
+
     private List<Server> initServer() {
         List<Server> serverList = new ArrayList<>();
         //INITIALIZE SERVER LIST
         for (int i = 0; i < this.numOfServers; i++) {
             serverList.add(new Server(i + 1));
+        }
+        for(int j = 0; j < this.numOfSelfCheckoutCounters; j++){
+            serverList.add(new Server(serverList.size() + 1, ServerType.SELFCHECKOUT));
         }
         return serverList;
     }

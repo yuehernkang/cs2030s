@@ -30,12 +30,23 @@ class Main {
             .mapToObj(i -> letterArray[(letterArray.length - 1) - i])
             .forEach(letter -> result.add(letter));
 
-        String reversedString = result.stream()
-            .map(String::valueOf)
-            .collect(Collectors.joining());
-        
-        return reversedString;
+
+        return result.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
+
+    static long countRepeats(int... array) {
+        return IntStream.range(0, array.length-1)
+                .filter(x ->
+                        array[x] == array[x+1] && (
+                                x >= array.length-2 ||
+                                        array[x] != array[x+2]
+                        )
+                )
+                .count();
+    }
+
 
 
 
