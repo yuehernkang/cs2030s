@@ -36,6 +36,14 @@ public class Event {
         this.serviceTime = serviceTime;
     }
 
+    public Event() {
+        this.id = 0;
+        this.time = 0;
+        this.serverId = 0;
+        this.eventState = EventState.FINISH;
+        this.serviceTime = 0;
+    }
+
     public int getServerId () { return this.serverId; }
 
     public EventState getEventState() {return this.eventState;}

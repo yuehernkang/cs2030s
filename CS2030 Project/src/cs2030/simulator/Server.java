@@ -61,6 +61,16 @@ public class Server {
         return this.waitingQueue.size();
     }
 
+    public boolean queueIsEmpty() {
+        return this.waitingQueue.size() <= 0;
+    }
+
+    public boolean canQueue(int maxQueueLength) {
+        return this.waitingQueue.size() >= maxQueueLength;
+    }
+
+//    public boolean
+
     public LinkedList<Event> getQueue() {
         return this.waitingQueue;
     }
