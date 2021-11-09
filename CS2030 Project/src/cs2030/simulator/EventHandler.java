@@ -61,7 +61,6 @@ public class EventHandler {
 
                     break;
                 } else {
-
                     e = new Event(event.getId(), event.getTime(), event.getServerId(), EventState.FINISH, event.getServiceTime());
                     this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(0));
                 }
@@ -73,9 +72,8 @@ public class EventHandler {
                     restTime = this.restTimes.peek();
                 }
                 e = new Event(e1.getId(), event.getTime() + restTime, e1.getServerId(), EventState.SERVE, e1.getServiceTime());
-                if (this.serverList.get(serverIndex).getQueue().peek().getId() == event.getId()) {
-                    this.serverList.get(serverIndex).getQueue().poll();
-                }
+                this.serverList.get(serverIndex).getQueue().poll();
+
                 this.restTimes.poll();
                 //No people waiting for this server
             } else {
@@ -86,7 +84,6 @@ public class EventHandler {
 
                 e = new Event(event.getId(), event.getTime(), event.getServerId(), EventState.FINISH, event.getServiceTime());
                 if (this.serverList.get(event.getServerId() - 1).getServerType() == ServerType.HUMAN) {
-
                     this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(restTime));
                 } else if (this.serverList.get(event.getServerId() - 1).getServerType() == ServerType.SELFCHECKOUT) {
                     this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(0));
@@ -109,7 +106,7 @@ public class EventHandler {
         Event nextEvent = null;
         //If there was someone in the queue
         if (this.serverList.get(event.getServerId() - 1).getQueueSize() != 0) {
-            double waitingTime = event.getTime() - this.serverList.get(event.getServerId() - 1).getQueue().poll().getTime();
+            double waitingTime = event.getTime() - this.serverList.get(event.getServerId() - 1).getQueue().peek().getTime();
             statisticsHandler.set(0, statisticsHandler.get(0) + waitingTime);
             q = this.serverList.get(event.getServerId() - 1).getQueue();
             s = new Server(event.getServerId(), ServerState.SERVING, this.serverList.get(event.getServerId() - 1).getServerType(), q, event.getServiceCompletionTime());
