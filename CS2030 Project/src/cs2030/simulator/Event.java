@@ -53,7 +53,7 @@ public class Event {
         this.time = 0;
         this.serverId = 0;
         this.eventState = EventState.FINISH;
-        this.serviceTime = 0;
+        this.serviceTime = () -> 0.0;
     }
 
     public int getServerId () { return this.serverId; }
@@ -61,7 +61,7 @@ public class Event {
     public EventState getEventState() {return this.eventState;}
 
     public double getServiceCompletionTime() {
-        return this.time + this.serviceTime;
+        return this.time + this.getServiceTime();
     }
 
     public double getTime() {

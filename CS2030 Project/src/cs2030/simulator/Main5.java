@@ -28,11 +28,10 @@ public class Main5 {
         for (int i = 0; i < numOfCustomers; i++) {
             if (i == 0) {
                 eventQueue.add(new Event(loopIndex + 1, 0, 0, EventState.ARRIVAL, () -> randomGenerator.genServiceTime()));
-                loopIndex++;
             } else {
                 eventQueue.add(new Event(loopIndex + 1, randomGenerator.genInterArrivalTime(), 0, EventState.ARRIVAL, () -> randomGenerator.genServiceTime()));
-                loopIndex++;
             }
+            loopIndex++;
         }
 
         for (int i = 0; i < numOfCustomers; i++) {

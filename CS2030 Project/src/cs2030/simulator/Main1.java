@@ -1,10 +1,10 @@
-//package cs2030.simulator;
+package cs2030.simulator;
 
-import cs2030.simulator.EventComparator;
-import cs2030.simulator.Event;
-import cs2030.simulator.EventState;
-import cs2030.simulator.Simulator;
-import cs2030.simulator.Server;
+//import cs2030.simulator.EventComparator;
+//import cs2030.simulator.Event;
+//import cs2030.simulator.EventState;
+//import cs2030.simulator.Simulator;
+//import cs2030.simulator.Server;
 
 
 import java.util.PriorityQueue;
@@ -20,7 +20,7 @@ public class Main1 {
         int loopIndex = 0;
 
         while (sc.hasNextDouble()) {
-            eventQueue.add(new Event(loopIndex + 1, sc.nextDouble(), 0, EventState.ARRIVAL, 1));
+            eventQueue.add(new Event(loopIndex + 1, sc.nextDouble(), 0, EventState.ARRIVAL, () -> 1.0));
             loopIndex++;
         }
 

@@ -22,7 +22,7 @@ public class Main3 {
         int loopIndex = 0;
 
         for (int i = 0; i < numOfCustomers; i++) {
-            eventQueue.add(new Event(loopIndex + 1, sc.nextDouble(), 0, EventState.ARRIVAL, sc.nextDouble()));
+            eventQueue.add(new Event(loopIndex + 1, sc.nextDouble(), 0, EventState.ARRIVAL, sc::nextDouble));
             loopIndex++;
         }
 
