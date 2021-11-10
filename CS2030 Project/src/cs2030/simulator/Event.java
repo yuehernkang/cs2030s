@@ -1,34 +1,46 @@
 package cs2030.simulator;
+import java.util.function.Supplier;
 
-/*
-EVENTS:
-ARRIVE, SERVE, WAIT, LEAVE and DONE
-
-ARRIVE → SERVE → DONE
-ARRIVE → WAIT → SERVE → DONE
-ARRIVE → LEAVE
-
-ARRIVE:
-ARRIVAL EVENT GENERATES A SERVE EVENT
-~SERVE~ IF THERE ARE AVAILABLE SERVERS,
-~WAIT~ IF THERE ARE NO AVAILABLE SERVERS
-~LEAVE~ ???
-
-SERVE EVENT:
-GENERATE A DONE EVENT
-
-DONE EVENT:
-GENERATE STATISTICS
-*/
+/**
+ * Event class
+ * EVENTS:
+ * ARRIVE, SERVE, WAIT, LEAVE and DONE
+ *
+ * ARRIVE → SERVE → DONE
+ * ARRIVE → WAIT → SERVE → DONE
+ * ARRIVE → LEAVE
+ *
+ * ARRIVE:
+ * ARRIVAL EVENT GENERATES A SERVE EVENT
+ * ~SERVE~ IF THERE ARE AVAILABLE SERVERS,
+ * ~WAIT~ IF THERE ARE NO AVAILABLE SERVERS
+ * ~LEAVE~ ???
+ *
+ * SERVE EVENT:
+ * GENERATE A DONE EVENT
+ *
+ * DONE EVENT:
+ * GENERATE STATISTICS
+ *
+ */
 
 public class Event {
     private final int id;
     private final double time;
     private final int serverId;
     private final EventState eventState;
-    private final double serviceTime;
+    private final Supplier<Double> serviceTime;
 
-    public Event(int id, double time, int serverId, EventState eventState, double serviceTime) {
+    /**
+     * Constructor for Event class
+     * @param  id           id of the particular event
+     * @param  time         time the event started
+     * @param  serverId     server that is assigned to this event
+     * @param  eventState   state of the event
+     * @param  serviceTime  service time refers to how long it takes to complete the event
+     * @return              returns a new Event object with the parameters
+     */
+    public Event(int id, double time, int serverId, EventState eventState, Supplier<Double> serviceTime) {
         this.id = id;
         this.time = time;
         this.serverId = serverId;
@@ -60,7 +72,7 @@ public class Event {
         return this.id;
     }
 
-    public double getServiceTime() { return this.serviceTime; }
+    public double getServiceTime() { return this.serviceTime.get(); }
 
     @Override
     public String toString() {

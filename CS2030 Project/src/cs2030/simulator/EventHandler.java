@@ -2,7 +2,6 @@ package cs2030.simulator;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-
 public class EventHandler {
     private final Event event;
     private final List<Server> serverList;
@@ -31,10 +30,11 @@ public class EventHandler {
     }
 
     Event handleDoneEvent() {
-        /*DONE EVENT
-        1. Give server specified rest time
-        2. Release Server
-        3. Create new serve event for waiting customer at current time
+        /**
+         * Give server specified rest time
+         * Release Server
+         * Create new serve event for waiting customer at current time
+         * @return the next event
          */
         int serverIndex = event.getServerId() - 1;
         double restTime = 0;
@@ -81,7 +81,12 @@ public class EventHandler {
         return e;
     }
 
-
+    /**
+     * Handles the serve event and returns the next event following this serve event
+     * Checks if the queue of the server is empty and returns a serve event if there is a customer
+     * in the queue
+     * @return the next event, finish event if there are no events in the queue, serve event if there are events in the queue
+     */
     Event handleServeEvent() {
         //Increment number of customers served
         statisticsHandler.set(1, statisticsHandler.get(1) + 1);
@@ -101,6 +106,11 @@ public class EventHandler {
         return new Event(event.getId(), event.getServiceCompletionTime(), event.getServerId(), es, event.getServiceTime());
     }
 
+    /**
+     * Handles the arrival event and returns the next event following this arrival event
+     * Checks if any servers are free, then assign server to the customer
+     * @return the next event depending on the available servers
+     */
     Event handleArrivalEvent() {
         Optional<Integer> serverIndex = getFreeServer();
         //THERE IS AVAILABLE SERVER
@@ -147,7 +157,10 @@ public class EventHandler {
         });
     }
 
-
+    /**
+     * Checks if there are any self-checkout counters available
+     * @return if there are any self-checkout counters available
+     */
     boolean selfCheckoutAvailable(int maxQueueLength) {
         int totalQueueSize = 0;
         for (Server s : this.serverList) {
@@ -156,6 +169,10 @@ public class EventHandler {
         return totalQueueSize >= maxQueueLength;
     }
 
+    /**
+     * Check if there are any free servers available to serve
+     * @return an optional containing the result
+     */
     Optional<Integer> getFreeServer() {
         Optional<Integer> serverId = Optional.empty();
         for (Server s : serverList) {
@@ -167,6 +184,10 @@ public class EventHandler {
         return serverId;
     }
 
+    /**
+     * Find the earliest available server depending on the @link{nextAvailableTime}
+     * @return an optional containing the result
+     */
     Server getEarliestAvailableServer() {
         Server s = new Server(0);
         if (this.serverList.size() > 1) {
