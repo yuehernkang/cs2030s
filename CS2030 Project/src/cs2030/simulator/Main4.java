@@ -1,8 +1,16 @@
 package cs2030.simulator;
 
+
+//import cs2030.simulator.Event;
+//import cs2030.simulator.EventComparator;
+//import cs2030.simulator.EventState;
+//import cs2030.simulator.Simulator;
+
 import java.util.LinkedList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main4 {
     public static void main(String[] args) {
@@ -17,11 +25,19 @@ public class Main4 {
         sc.nextLine();
         PriorityQueue<Event> eventQueue = new PriorityQueue<>(new EventComparator());
         LinkedList<Double> restTime = new LinkedList<>();
+        List<Double> arrivalTimes = new ArrayList<>();
+        List<Double> serviceTimes = new ArrayList<>();
 
         int loopIndex = 0;
 
         for (int i = 0; i < numOfCustomers; i++) {
-            eventQueue.add(new Event(loopIndex + 1, sc.nextDouble(), 0, EventState.ARRIVAL, sc::nextDouble));
+            arrivalTimes.add(sc.nextDouble());
+            serviceTimes.add(sc.nextDouble());
+        }
+
+        for (int i = 0; i < numOfCustomers; i++) {
+            int finalLoopIndex = loopIndex;
+            eventQueue.add(new Event(i + 1, arrivalTimes.get(i), 0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex)));
             loopIndex++;
         }
 

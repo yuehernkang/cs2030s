@@ -69,7 +69,6 @@ public class EventHandler {
                 //There is people waiting for this server
                 if (!this.restTimes.isEmpty()) restTime = this.restTimes.peek();
                 if (!this.serverList.get(serverIndex).queueIsEmpty()) {
-                    this.serverList.get(serverIndex).getQueue().removeFirst();
                     this.restTimes.poll();
                     e = new Event(e1.getId(), event.getTime() + restTime, e1.getServerId(), EventState.SERVE, e1::getServiceTime);
                 } else {
@@ -100,20 +99,41 @@ public class EventHandler {
         int serverIndex = event.getServerId() - 1;
         ServerType st = this.serverList.get(serverIndex).getServerType();
         EventState es = st == ServerType.HUMAN ? EventState.DONE : EventState.DONESELFCHECKOUT;
+        Event e = new Event(event.getId(), event.getServiceCompletionTime(), event.getServerId(), es, event::getServiceTime);
+        double waitingTime = 0;
+
         //If there was someone in the queue
-        if (!this.serverList.get(serverIndex).queueIsEmpty()) {
-            double waitingTime = 0;
-            for (int i = 0; i < this.serverList.get(serverIndex).getQueue().size(); i++) {
-                if(event.getId() == this.serverList.get(serverIndex).getQueue().get(i).getId()){
-                    waitingTime = event.getTime() - this.serverList.get(serverIndex).getQueue().peek().getTime();
+        switch (st) {
+            case HUMAN: {
+                if (!this.serverList.get(serverIndex).queueIsEmpty()) {
+                    for (int i = 0; i < this.serverList.get(serverIndex).getQueue().size(); i++) {
+                        if (event.getId() == this.serverList.get(serverIndex).getQueue().get(i).getId()) {
+                            waitingTime = event.getTime() - this.serverList.get(serverIndex).getQueue().peek().getTime();
+                            this.serverList.get(serverIndex).getQueue().poll();
+                        }
+                    }
+                    q = this.serverList.get(serverIndex).getQueue();
+                    s = new Server(event.getServerId(), ServerState.SERVING, this.serverList.get(serverIndex).getServerType(), q, event.getServiceCompletionTime());
+                    serverList.set(serverIndex, s);
                 }
             }
-            statisticsHandler.set(0, statisticsHandler.get(0) + waitingTime);
-            q = this.serverList.get(serverIndex).getQueue();
-            s = new Server(event.getServerId(), ServerState.SERVING, this.serverList.get(serverIndex).getServerType(), q, event.getServiceCompletionTime());
-            serverList.set(serverIndex, s);
+            case SELFCHECKOUT: {
+                for (Server s1 : this.serverList) {
+                    if (s1.getServerType() == ServerType.SELFCHECKOUT) {
+                        for (Event e1 :
+                                s1.getQueue()) {
+                            if (e1.getId() == event.getId()) {
+                                waitingTime = event.getTime() - e1.getTime();
+                                s1.getQueue().poll();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
-        return new Event(event.getId(), event.getServiceCompletionTime(), event.getServerId(), es, event::getServiceTime);
+        statisticsHandler.set(0, statisticsHandler.get(0) + waitingTime);
+        return e;
     }
 
     /**
@@ -200,7 +220,7 @@ public class EventHandler {
     boolean findEventInQueue(int eventId, Server s) {
         boolean result = false;
         for (Event e : s.getQueue()) {
-            if(e.getId() == eventId){
+            if (e.getId() == eventId) {
                 result = true;
                 break;
             }

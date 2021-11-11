@@ -38,8 +38,8 @@ public class Main5 {
             restTime.add(sc.nextDouble());
         }
 
-//        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, numOfSelfCheckoutCounters);
-//        s.simulate();
-//        sc.close();
+        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, numOfSelfCheckoutCounters);
+        s.simulate();
+        sc.close();
     }
 }

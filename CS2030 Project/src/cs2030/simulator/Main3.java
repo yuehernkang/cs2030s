@@ -18,11 +18,18 @@ public class Main3 {
         sc.nextLine();
         PriorityQueue<Event> eventQueue = new PriorityQueue<>(new EventComparator());
         LinkedList<Double> restTime = new LinkedList<>();
-
+        List<Double> arrivalTimes = new ArrayList<>();
+        List<Double> serviceTimes = new ArrayList<>();
         int loopIndex = 0;
 
         for (int i = 0; i < numOfCustomers; i++) {
-            eventQueue.add(new Event(loopIndex + 1, sc.nextDouble(), 0, EventState.ARRIVAL, sc::nextDouble));
+            arrivalTimes.add(sc.nextDouble());
+            serviceTimes.add(sc.nextDouble());
+        }
+
+        for (int i = 0; i < numOfCustomers; i++) {
+            int finalLoopIndex = loopIndex;
+            eventQueue.add(new Event(i + 1, arrivalTimes.get(i), 0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex)));
             loopIndex++;
         }
 
