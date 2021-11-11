@@ -1,4 +1,5 @@
 package cs2030.simulator;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 /**
@@ -30,6 +31,7 @@ public class Event {
     private final int serverId;
     private final EventState eventState;
     private final Supplier<Double> serviceTime;
+    private Optional<Double> cache;
 
     /**
      * Constructor for Event class
@@ -46,6 +48,7 @@ public class Event {
         this.serverId = serverId;
         this.eventState = eventState;
         this.serviceTime = serviceTime;
+        this.cache = Optional.empty();
     }
 
     public Event() {
@@ -58,7 +61,7 @@ public class Event {
 
     public int getServerId () { return this.serverId; }
 
-    public EventState getEventState() {return this.eventState;}
+    public EventState getEventState() { return this.eventState; }
 
     public double getServiceCompletionTime() {
         return this.time + this.getServiceTime();
@@ -72,7 +75,11 @@ public class Event {
         return this.id;
     }
 
-    public double getServiceTime() { return this.serviceTime.get(); }
+    public double getServiceTime() {
+        Double v = this.cache.orElseGet(this.serviceTime);
+        cache = Optional.of(v);
+        return v;
+    }
 
     @Override
     public String toString() {

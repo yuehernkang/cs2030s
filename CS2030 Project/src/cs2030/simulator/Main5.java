@@ -1,4 +1,11 @@
-package cs2030.simulator;
+//package cs2030.simulator;
+
+
+import cs2030.simulator.Event;
+import cs2030.simulator.EventComparator;
+import cs2030.simulator.EventState;
+import cs2030.simulator.RandomGenerator;
+import cs2030.simulator.Simulator;
 
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -21,23 +28,20 @@ public class Main5 {
         RandomGenerator randomGenerator = new RandomGenerator(seed, lambda, mu, rho);
 
         sc.nextLine();
+
         PriorityQueue<Event> eventQueue = new PriorityQueue<>(new EventComparator());
         LinkedList<Double> restTime = new LinkedList<>();
-        int loopIndex = 0;
-
-        for (int i = 0; i < numOfCustomers; i++) {
-            if (i == 0) {
-                eventQueue.add(new Event(loopIndex + 1, 0, 0, EventState.ARRIVAL, () -> randomGenerator.genServiceTime()));
-            } else {
-                eventQueue.add(new Event(loopIndex + 1, randomGenerator.genInterArrivalTime(), 0, EventState.ARRIVAL, () -> randomGenerator.genServiceTime()));
-            }
+        int loopIndex = 1;
+        double trackTime = 0;
+//        eventQueue.add(new Event(1, 0, 0, EventState.ARRIVAL, randomGenerator::genServiceTime));
+        eventQueue.add(new Event(1, 0, 0, EventState.ARRIVAL, randomGenerator::genServiceTime));
+        for (int i = 1; i < numOfCustomers; i++) {
+            double time = randomGenerator.genInterArrivalTime();
+            trackTime += time;
+            eventQueue.add(new Event(loopIndex + 1, trackTime, 0, EventState.ARRIVAL, randomGenerator::genServiceTime));
             loopIndex++;
         }
-
-        for (int i = 0; i < numOfCustomers; i++) {
-            restTime.add(sc.nextDouble());
-        }
-
+        System.out.println(eventQueue);
         Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, numOfSelfCheckoutCounters);
         s.simulate();
         sc.close();
