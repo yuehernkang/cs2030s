@@ -8,6 +8,7 @@ public class Simulator {
     private final int maxQueueLength;
     private final LinkedList<Double> restTimes;
     private final int numOfSelfCheckoutCounters;
+    private final RandomGenerator randomGenerator;
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue) {
         this.numOfServers = numOfServers;
@@ -15,6 +16,7 @@ public class Simulator {
         this.maxQueueLength = 1;
         this.restTimes = new LinkedList<>();
         this.numOfSelfCheckoutCounters = 0;
+        this.randomGenerator = new RandomGenerator(0,0.0,0.0,0.0);
     }
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength) {
@@ -23,6 +25,7 @@ public class Simulator {
         this.maxQueueLength = maxQueueLength;
         this.restTimes = new LinkedList<>();
         this.numOfSelfCheckoutCounters = 0;
+        this.randomGenerator = new RandomGenerator(0,0.0,0.0,0.0);
     }
 
     public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, LinkedList<Double> restTimes, int numOfSelfCheckoutCounters) {
@@ -31,6 +34,16 @@ public class Simulator {
         this.maxQueueLength = maxQueueLength;
         this.restTimes = restTimes;
         this.numOfSelfCheckoutCounters = numOfSelfCheckoutCounters;
+        this.randomGenerator = new RandomGenerator(0,0.0,0.0,0.0);
+    }
+
+    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, LinkedList<Double> restTimes, int numOfSelfCheckoutCounters, RandomGenerator randomGenerator) {
+        this.numOfServers = numOfServers;
+        this.eventQueue = eventQueue;
+        this.maxQueueLength = maxQueueLength;
+        this.restTimes = restTimes;
+        this.numOfSelfCheckoutCounters = numOfSelfCheckoutCounters;
+        this.randomGenerator = randomGenerator;
     }
 
     public void simulate() {
@@ -40,7 +53,7 @@ public class Simulator {
         while (!this.eventQueue.isEmpty()) {
             Event event = this.eventQueue.poll();
             System.out.println(event);
-            EventHandler eventHandler = new EventHandler(event, serverList, statisticsHandler, this.maxQueueLength, this.restTimes, this.numOfSelfCheckoutCounters);
+            EventHandler eventHandler = new EventHandler(event, serverList, statisticsHandler, this.maxQueueLength, this.restTimes, this.numOfSelfCheckoutCounters, this.randomGenerator);
             Event latestEvent = eventHandler.handleEvent();
             if(latestEvent.getEventState() != EventState.FINISH){
                 eventQueue.add(latestEvent);

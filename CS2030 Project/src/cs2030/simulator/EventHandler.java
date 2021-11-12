@@ -1,7 +1,6 @@
 package cs2030.simulator;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class EventHandler {
     private final Event event;
@@ -10,18 +9,20 @@ public class EventHandler {
     private final int maxQueueLength;
     private final LinkedList<Double> restTimes;
     private final int numOfSelfCheckoutCounters;
+    private final RandomGenerator randomGenerator;
 
     public EventHandler(Event event,
                         List<Server> serverList,
                         List<Double> statisticsHandler,
                         int maxQueueLength, LinkedList<Double> restTimes,
-                        int numOfSelfCheckoutCounters) {
+                        int numOfSelfCheckoutCounters, RandomGenerator randomGenerator) {
         this.event = event;
         this.serverList = serverList;
         this.statisticsHandler = statisticsHandler;
         this.maxQueueLength = maxQueueLength;
         this.restTimes = restTimes;
         this.numOfSelfCheckoutCounters = numOfSelfCheckoutCounters;
+        this.randomGenerator = randomGenerator;
     }
 
     Event handleEvent() {
@@ -161,29 +162,38 @@ public class EventHandler {
             Event e = new Event();
             //NO AVAILABLE SERVER, NEED TO CHECK IF ANY SELFCHECKOUT
             //IF AT MAX SELFCHECKOUT, NEED TO ADD TO SERVER QUEUE IF NOT AT <MAX QUEUE> LENGTH
-            int idOfSelfCheckout = this.serverList.size() - this.numOfSelfCheckoutCounters + 1;
-            Server earliestAvailableServer = getEarliestAvailableServer();
-            //LEAVE IF THERE IS ALREADY <MAX QUEUE> IN THE QUEUE
-            if (earliestAvailableServer.getId() != 0) {
-                if (earliestAvailableServer.canQueue(this.maxQueueLength) || selfCheckoutAvailable(this.maxQueueLength)) {
+            if(event.getCustomerType() == CustomerType.GREEDY){
+//                this.serverList
+//                        .stream()
+//                        .mapToInt(x -> x.getQueueSize())
+//                        .min()
+//                        .
+            } else {
+                int idOfSelfCheckout = this.serverList.size() - this.numOfSelfCheckoutCounters + 1;
+                Server earliestAvailableServer = getEarliestAvailableServer();
+                //LEAVE IF THERE IS ALREADY <MAX QUEUE> IN THE QUEUE
+                if (earliestAvailableServer.getId() != 0) {
+                    if (earliestAvailableServer.canQueue(this.maxQueueLength) || selfCheckoutAvailable(this.maxQueueLength)) {
+                        this.statisticsHandler.set(2, this.statisticsHandler.get(2) + 1);
+                        e = new Event(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event::getServiceTime);
+                    } else {
+                        //ADD TO EARLIEST SERVER'S QUEUE
+                        if (earliestAvailableServer.getServerType() == ServerType.HUMAN) {
+                            e = new Event(event.getId(), event.getTime(), earliestAvailableServer.getId(), EventState.WAIT, event::getServiceTime);
+                        } else if (earliestAvailableServer.getServerType() == ServerType.SELFCHECKOUT) {
+                            e = new Event(event.getId(), event.getTime(), idOfSelfCheckout, EventState.WAITSELFCHECKOUT, event::getServiceTime);
+                        }
+                        LinkedList<Event> eventQueue = new LinkedList<>(earliestAvailableServer.getQueue());
+                        eventQueue.add(e);
+                        Server newServer = new Server(earliestAvailableServer.getId(), earliestAvailableServer.getServerState(), earliestAvailableServer.getServerType(), eventQueue, earliestAvailableServer.getNextAvailableTime() + event.getServiceTime());
+                        serverList.set(earliestAvailableServer.getId() - 1, newServer);
+                    }
+                } else {
                     this.statisticsHandler.set(2, this.statisticsHandler.get(2) + 1);
                     e = new Event(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event::getServiceTime);
-                } else {
-                    //ADD TO EARLIEST SERVER'S QUEUE
-                    if (earliestAvailableServer.getServerType() == ServerType.HUMAN) {
-                        e = new Event(event.getId(), event.getTime(), earliestAvailableServer.getId(), EventState.WAIT, event::getServiceTime);
-                    } else if (earliestAvailableServer.getServerType() == ServerType.SELFCHECKOUT) {
-                        e = new Event(event.getId(), event.getTime(), idOfSelfCheckout, EventState.WAITSELFCHECKOUT, event::getServiceTime);
-                    }
-                    LinkedList<Event> eventQueue = new LinkedList<>(earliestAvailableServer.getQueue());
-                    eventQueue.add(e);
-                    Server newServer = new Server(earliestAvailableServer.getId(), earliestAvailableServer.getServerState(), earliestAvailableServer.getServerType(), eventQueue, earliestAvailableServer.getNextAvailableTime() + event.getServiceTime());
-                    serverList.set(earliestAvailableServer.getId() - 1, newServer);
                 }
-            } else {
-                this.statisticsHandler.set(2, this.statisticsHandler.get(2) + 1);
-                e = new Event(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event::getServiceTime);
             }
+
             return e;
         });
     }
@@ -194,6 +204,11 @@ public class EventHandler {
      * @return if there are any self-checkout counters available
      */
     boolean selfCheckoutAvailable(int maxQueueLength) {
+//        int totalQueueSize = this.serverList
+//                .stream()
+//                .filter(s -> s.getServerType() != ServerType.SELFCHECKOUT)
+//                .mapToInt(Server::getQueueSize)
+//                .reduce(0, Integer::sum);
         int totalQueueSize = 0;
         for (Server s : this.serverList) {
             if (s.getServerType() == ServerType.SELFCHECKOUT) totalQueueSize += s.getQueueSize();
