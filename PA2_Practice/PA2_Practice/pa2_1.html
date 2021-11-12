@@ -1,0 +1,839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0057)https://codecrunch.comp.nus.edu.sg/task_view.php?tid=5043 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>CodeCrunch</title>
+<!-- START NUS Includes-->
+<script type="text/javascript" src="./pa2_1_files/nussearch.js"></script>
+<link rel="stylesheet" type="text/css" href="./pa2_1_files/nusbase.css" media="screen, print, projection, handheld">
+<link rel="stylesheet" type="text/css" href="./pa2_1_files/nusmenu.css" media="screen, print, projection, handheld">
+<link rel="stylesheet" type="text/css" href="./pa2_1_files/nusscreen.css" media="screen, projection, print">
+<link href="https://codecrunch.comp.nus.edu.sg/nus/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon" href="https://codecrunch.comp.nus.edu.sg/nus/blank.png">
+<!-- END NUS Includes -->
+<script type="text/javascript" src="./pa2_1_files/ajax.js"></script>
+<script type="text/javascript" src="./pa2_1_files/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./pa2_1_files/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="./pa2_1_files/jquery.tablesorter.pager.js"></script>
+<!--<script type="text/javascript" src="/js/folding.js"></script>-->
+<script type="text/javascript" src="./pa2_1_files/jquery.watermark.min.js"></script>
+<script type="text/javascript">
+            function enterPressButton(field, button) {
+                $(field).keypress(function(e){if(e.which==13)$(button).trigger("click");});
+            }
+</script>
+<link rel="stylesheet" href="./pa2_1_files/style.css" type="text/css">
+<link rel="stylesheet" href="./pa2_1_files/jquery.tablesorter.css" type="text/css">
+<script type="text/javascript" src="./pa2_1_files/jquery-1.3.2.min.js"></script>
+<!--<script type="text/javascript" src="js/folding.js"></script>-->
+<script type="text/javascript" src="./pa2_1_files/jquery.rating.js"></script>
+<script type="text/javascript" src="./pa2_1_files/behaviour.js"></script>
+<script type="text/javascript" src="./pa2_1_files/textarea_maxlen.js"></script>
+<script type="text/javascript" src="./pa2_1_files/jquery.timer.js"></script>
+
+<script type="text/javascript" src="./pa2_1_files/plupload.full.min.js"></script>
+
+<link rel="stylesheet" href="./pa2_1_files/jquery.rating.css" type="text/css">
+<link rel="stylesheet" href="./pa2_1_files/style.css" type="text/css">
+<link rel="stylesheet" href="./pa2_1_files/tagcloud.css" type="text/css">
+<link rel="stylesheet" href="./pa2_1_files/jquery-ui-1.7.2.custom.css" type="text/css">
+
+<link rel="stylesheet" href="./pa2_1_files/jquery.ui.plupload.css" type="text/css">
+
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1035.0" data-gr-ext-installed="">
+<!-- START NUS-Header -->
+
+<!-- NUS Header -->
+<div id="nusheader" class="nusbody">
+<div class="nuslogodiv">
+<a href="https://www.nus.edu.sg/">
+<img class="nuslogo" src="./pa2_1_files/soclogo.png" alt="">
+</a>
+</div>
+<div id="nuspointermenu">
+<ul>
+<li><a href="https://exchange.nus.edu.sg/"><span style="text-transform:none">NUS WebMail</span></a></li>
+<li><a href="https://ivle.nus.edu.sg/lms/default.aspx">ivle</a></li>
+<li><a href="https://www.lib.nus.edu.sg/">library</a></li>
+<li><a href="https://www.nus.edu.sg/campusmap/">maps</a></li>
+<!--<li><a href="https://aces01.nus.edu.sg/CoE/jsp/coeMain.jsp">calendar</a></li>-->
+<!--<li><a href="/sitemap">sitemap</a></li>-->
+<!--<li><a href="#">a-z index</a></li>-->
+<!--<li><a href="/contact">contact</a></li>-->
+<li><a href="https://codecrunch.comp.nus.edu.sg/task_view.php?tid=5043#" id="rightcorner">&nbsp;</a></li>
+</ul>
+<br style="clear: left">
+</div>
+<div id="searchform">
+<script src="./pa2_1_files/nussearch.js" type="text/javascript"></script>
+<form id="frmSearch" onsubmit="evalSearch();return false" action="https://codecrunch.comp.nus.edu.sg/task_view.php?tid=5043"><div>
+<a href="https://www.nus.edu.sg/search/" style="text-decoration:none; font-size:11px; font-weight:bold; color:#666666">Search </a>
+<input id="txtKeyword" type="text" value="search for..." onfocus="value=&#39;&#39;" class="equal" size="18">
+in
+<select id="SearchMenu" name="SearchMenu">
+<option selected="selected" value="0">NUS Websites</option>
+<option value="1">Internet</option>
+<option value="2">Staff Directory</option>
+<option value="3">Advanced Search</option>
+</select>
+<input class="equal" id="Go" src="./pa2_1_files/go.png" type="image">
+</div></form>
+</div>
+</div>
+
+<!-- NUS Local-Navigation --><!--
+<div id="nusmenu" class="nusbody"><div id="nusmenu_l"><div id="nusmenu_r">
+<ul>
+  <li><a href="http://www.comp.nus.edu.sg/index.html">Home</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/about.html">About Us</a></li>
+  <li><a class="drop" href="javascript:;">Departments</a>
+    <ul>
+      <li><a href="http://www.comp.nus.edu.sg/cs" >Computer Science</a></li>
+      <li><a href="http://www.comp.nus.edu.sg/is/" >Information Systems</a></li>
+    </ul>
+  </li>
+  <li><a href="http://www.comp.nus.edu.sg/undergraduates" >Undergraduate</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/graduates" >Graduate</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/research" >Research</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/entrepreneurship" >Entrepreneurship</a></li>
+  <li><a href="http://www.stmi.nus.edu.sg" >Executive Education</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/external_relations" >External Relations</a></li>
+</ul>
+</div></div></div>
+-->
+
+<!-- NUS Inner-Title -->
+<div id="nustitle" class="nusbody"><div id="nustitle_l"><div id="nustitle_r">
+              <h1 id="site-name">
+                <a href="https://codecrunch.comp.nus.edu.sg/" title="Home" rel="home">CodeCrunch</a>
+              </h1>
+</div></div></div>
+
+<!-- END NUS-Header -->
+
+<div id="banner">
+        <div id="topmenu">
+        <div id="login">
+                Logged in as: <strong>e0310357</strong>
+                </div>
+                <div style="display: block;"><ul>
+                                        <li><a href="https://codecrunch.comp.nus.edu.sg/index.php">Home</a></li>
+                                                    <li><a href="https://codecrunch.comp.nus.edu.sg/course_viewall.php">Courses</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/tutorial_viewall.php">Tutorials</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/task_viewall.php">Tasks</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/tutorial_browser.php">Browse Tutorials</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/user_viewsubmissions.php">My Submissions</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/tools.php">Tools</a></li>
+                                                <li><a href="https://codecrunch.comp.nus.edu.sg/logout_process.php">Logout</a></li>
+                            </ul></div>
+        </div>
+</div>
+<div id="container">
+<div id="outer">
+<div id="inner">
+	<div id="content_full">                         
+		<div class="content-header"><h3>CS2030 Practical Assessment #2</h3></div>
+		<div class="spacer"></div>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tbody><tr><td valign="top" style="width: 30%;">
+				<div class="meta_header">Tags &amp; Categories</div>
+				<div id="classifyList"><span class="value">Tags:
+</span>
+<span class="value">Categories:
+</span></div>
+			</td>
+			<td valign="top" style="width: 40%;">
+				<div class="meta_header">Related Tutorials</div>
+				<div id="tutorialList"></div>
+			</td>
+			<td valign="top" style="width: 30%;">
+			</td>
+			</tr>
+		</tbody></table>
+		<div class="content-header">
+			<h3>Task Content
+							</h3>
+		</div>                          
+		<div class="panel"><div class="task-content">
+		
+<h3>CS2030 Practical Assessment #2</h3>
+
+<p>When teaching Java programming to beginners, static variables (or class variables) are introduced as a way for the class to keep track of aggregated data (e.g. keeping a count of the number of objects created).
+The example below illustrates the <tt>Circle</tt> class which uses a mutable <tt>numOfCircles</tt> class variable.
+
+</p><pre>class Circle {
+    private static int numOfCircles = 0;
+    private final double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+        numOfCircles = numOfCircles + 1;
+    }
+
+    double getRadius() {
+        return this.radius;
+    }
+
+    static int getNumOfCircles() {
+        return Circle.numOfCircles;
+    }
+
+    @Override
+    public String toString() {
+        return "Circle of radius " + this.radius;
+    }
+}
+
+jshell&gt; new Circle(1).getNumOfCircles()
+$.. ==&gt; 1
+
+jshell&gt; new Circle(1).getNumOfCircles() // same expression; different result
+$.. ==&gt; 2
+</pre>
+
+
+
+<p>It should be noted that the class variable is mutable, and every creation of a <tt>Circle</tt> object would have a <i>side-effect</i> in that the external state <tt>numOfCircles</tt> has to be updated.
+
+</p><h4>Task</h4>
+
+<p>We shall look at creating an "aggregation context" to wrap around an object while maintaining immutability with no side-effects.
+There are altogether four levels.  You need to complete ALL levels.
+
+</p><h4>Take Note!</h4>
+
+<ul>
+<li>Write each class/interface/enum in its own file
+</li><li>Ensure that ALL object properties and class constants are declared private final
+</li><li>You are NOT allowed to use instanceof, other than within the same class (e.g. obj instanceof A within class A).  No Java reflection is allowed
+</li><li>There is NO need to type cast with <tt>SuppressWarnings</tt>
+</li><li>You are only allowed to import <tt>java.util.Optional</tt> and specific packages from <tt>java.util.function</tt>. Do not use <tt>*</tt> wildcard imports.
+</li><li>There is NO need to use arrays, Java Collections or Java Streams
+</li><li>For ease of implementation (and also grading), do NOT include bounded/unbounded wildcards
+</li><li>Do NOT use method references (the grader cannot handle it)
+</li></ul>
+
+<p>As this exercise involves a very specific application with few classes, your code will not be checked for cyclic dependencies.
+Moreover, there are NO restrictions on the Java control flow constructs you can use :)
+
+</p><h4>Level 1</h4>
+
+<p>Define a generic <tt>Count</tt> class that wraps around an object of type <tt>T</tt>.
+
+</p><ul>
+<li>a static <tt>of</tt> method that takes in the first object of type <tt>T</tt> and sets the count to 1
+</li><li>a method <tt>map</tt> that takes in a new object of type <tt>T</tt> and updates the count 
+</li><li>a <tt>toString</tt> method that outputs the count followed by the last updated object
+</li></ul>
+
+<pre>jshell&gt; Count.&lt;Circle&gt;of(new Circle(1.0))
+$.. ==&gt; (1, Circle of radius 1.0)
+
+jshell&gt; Count.&lt;Circle&gt;of(new Circle(1.0)).
+   ...&gt; map(new Circle(2.0))
+$.. ==&gt; (2, Circle of radius 2.0)
+
+jshell&gt; Count&lt;String&gt; one = Count.&lt;String&gt;of("one")
+one ==&gt; (1, one)
+
+jshell&gt; one.map("two").map("three")
+$.. ==&gt; (3, three)
+
+jshell&gt; one
+one ==&gt; (1, one)
+</pre>
+
+<h4>Level 2</h4>
+
+<p>Counting the number of objects created is just one of the many ways aggregation can be done.
+As such, we would like the client to specify the aggregation function to be performed.
+
+</p><p>Define a class <tt>Aggregate&lt;S,T&gt;</tt> with the following methods
+
+</p><ul>
+<li>a static <tt>seed</tt> method that takes in a seed value of type <tt>S</tt> and initializes the <tt>Aggregate</tt> context with the seed value.
+You may assume that the <tt>seed</tt> will only be used to start off an <tt>Aggregate</tt> pipeline
+</li><li>a method <tt>map</tt> that takes in a new object of type <tt>T</tt> as well as the aggregation function to be performed for that object
+</li><li>a <tt>toString</tt> method that outputs the aggregated value followed by the last updated object
+</li></ul>
+
+<p>Moreover, since counting is a form of aggregation, make <tt>Count</tt> a sub-class of <tt>Aggregate</tt>.
+Note that <tt>Count</tt> should NOT have any properties now.
+
+</p><pre>jshell&gt; Aggregate.&lt;Integer,Circle&gt;seed(0)
+$.. ==&gt; (0)
+
+jshell&gt; Aggregate.&lt;Integer,Circle&gt;seed(10)
+$.. ==&gt; (10)
+
+jshell&gt; Aggregate.&lt;Integer,Circle&gt;seed(1).
+   ...&gt; map(x -&gt; x * 2, new Circle(2.0))
+$.. ==&gt; (2, Circle of radius 2.0)
+
+jshell&gt; Count&lt;String&gt; count = Count.&lt;String&gt;of("one").
+   ...&gt; map("two").map("three")
+count ==&gt; (3, three)
+
+jshell&gt; Aggregate&lt;Integer,String&gt; agg = count.map("four")
+agg ==&gt; (4, four)
+
+jshell&gt; count
+count ==&gt; (3, three)
+
+jshell&gt; Aggregate.&lt;Integer,Circle&gt;seed(0).
+   ...&gt; map(x -&gt; x + 1, new Circle(1.0)).
+   ...&gt; map(x -&gt; x + 2, new Circle(2.0))
+$.. ==&gt; (3, Circle of radius 2.0)
+
+jshell&gt; Aggregate.&lt;Double,Circle&gt;seed(0.0).
+   ...&gt; map(x -&gt; x + 1.0, new Circle(1.0)).
+   ...&gt; map(x -&gt; x + 2.0, new Circle(2.0))
+$.. ==&gt; (3.0, Circle of radius 2.0)
+</pre>
+
+<h4>Level 3</h4>
+
+<p>You will realize that the <tt>map</tt> method, such as 
+<tt>map(x -&gt; x + 2.0, new Circle(2.0))</tt>,
+performs aggregation independently from the object in the second argument.
+This would be an issue for certain updates such as "increment with the radius of the new Circle object" as it would be difficult to enforce consistency between the two arguments (unless we use an external variable).
+
+</p><pre>jshell&gt; Circle c = new Circle(2.0)
+c ==&gt; Circle of radius 2.0
+
+jshell&gt; Aggregate.&lt;Double,Circle&gt;seed(0.0).
+   ...&gt; map(x -&gt; x + 1.0, new Circle(1.0)).
+   ...&gt; map(x -&gt; x + c.getRadius(), c)
+$.. ==&gt; (3.0, Circle of radius 2.0)
+</pre>
+
+An alternative would be to pass a <tt>Function</tt> (that outputs a <tt>Pair</tt> of values) to the <tt>map</tt> method instead.
+As an example,
+
+<pre>jshell&gt; Aggregate.&lt;Double,Circle&gt;seed(0.0).
+   ...&gt; map(x -&gt; x + 1.0, new Circle(1.0)).
+   ...&gt; map(x -&gt; {
+   ...&gt;    Circle c = new Circle(2.0);  // Circle c is now within the lambda 
+   ...&gt;    return Pair.&lt;Double,Circle&gt;of(x + c.getRadius(), c); 
+   ...&gt; })
+$.. ==&gt; (3.0, Circle of radius 2.0)
+</pre>
+
+<p>Define the <tt>Pair</tt> class with a static method <tt>of</tt> that constructs a pair of values, possibly of different types.
+Include this new mapping as an overloaded <tt>map</tt> method in the <tt>Aggregate</tt> class.
+There is no need to modify the <tt>Count</tt> class to make use of this new <tt>map</tt> method.
+
+</p><pre>jshell&gt; Pair.&lt;Integer,String&gt;of(1, "one")
+$.. ==&gt; (1, one)
+
+jshell&gt; Aggregate.&lt;Double,Circle&gt;seed(0.0).
+   ...&gt; map(x -&gt; x + 1.0, new Circle(1.0)).
+   ...&gt; map(x -&gt; Pair.&lt;Double,Circle&gt;of(x + 2.0, new Circle(2.0)))
+$.. ==&gt; (3.0, Circle of radius 2.0)
+
+jshell&gt; Aggregate.&lt;Double,Circle&gt;seed(0.0).
+   ...&gt; map(x -&gt; x + 1.0, new Circle(1.0)).
+   ...&gt; map(x -&gt; {
+   ...&gt;     Circle c = new Circle(2.0); 
+   ...&gt;     return Pair.&lt;Double,Circle&gt;of(x + c.getRadius(), c); 
+   ...&gt; })
+$.. ==&gt; (3.0, Circle of radius 2.0)
+
+jshell&gt; Count&lt;String&gt; count = Count.&lt;String&gt;of("one").
+   ...&gt; map("two").map("three")
+count ==&gt; (3, three)
+
+jshell&gt; Aggregate&lt;Integer,String&gt; agg = count.map("four").
+   ...&gt; map(x -&gt; Pair.&lt;Integer,String&gt;of(x + 1, "five"))
+agg ==&gt; (5, five)
+
+jshell&gt; count
+count ==&gt; (3, three)
+</pre>
+
+<h4>Level 4</h4>
+
+<p>Up till now, each <tt>map</tt> method has performed aggregation by updating the first value of the <tt>Pair</tt>.
+The second value is merely the most recent object involved in the aggregation.
+One wonders if there is any way to aggregate the objects at the same time, such as joining strings.
+Let's do this using <tt>flatMap</tt>!!
+
+</p><p>Include the <tt>flatMap</tt> method in <tt>Aggregate</tt> that takes in a <tt>Function&lt;T,Aggregate&lt;S,T&gt;&gt;</tt> constructed via the static <tt>of</tt> method.  Below is an example:
+
+</p><pre>jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one"))
+$.. ==&gt; (1, one)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one")).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, t + " two")))
+$.. ==&gt; (3, one two)
+</pre>
+
+<p>Notice that we take in a function where the input is of the element type <tt>T</tt>, rather than the aggregate type.
+There is a very good reason for this as it allows us to specify the "mapping" for both the aggregation, as well as the element.
+
+</p><p><tt>Aggregate.of</tt> cannot perform the actual aggregation by itself, i.e. without being part of a <tt>flatMap</tt>.  Hence the output of the following is simply the string <tt>Aggregate</tt>.
+
+</p><pre>jshell&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, "two"))
+$.. ==&gt; Aggregate
+</pre>
+
+<p>Chaining the <tt>of</tt> method after the <tt>seed</tt> method will result in an invalid aggregate.
+
+</p><pre>jshell&gt; Aggregate.&lt;Integer,String&gt;seed(11).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, "two")))
+$.. ==&gt; Invalid Aggregate
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(11).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, "two"))).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one"))
+$.. ==&gt; Invalid Aggregate
+</pre>
+
+<p>Additionally, chaining <tt>map</tt> or <tt>flatMap</tt> methods after the <tt>of</tt> method will also render the aggregate invalid.
+
+</p><pre>jshell&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, "two")).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one"))
+$.. ==&gt; Invalid Aggregate
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, "two")).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one")).
+   ...&gt; map(s -&gt; Pair.of(s + 3, "three"))
+$.. ==&gt; Invalid Aggregate
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, "two")).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one")).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, t + " two")))
+$.. ==&gt; Invalid Aggregate
+</pre>
+
+<p>Study the following tests carefully and infer how <tt>Aggregate</tt> should be modified for this level.
+
+</p><pre>jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one"))
+$.. ==&gt; (1, one)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one")).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, t + " two")))
+$.. ==&gt; (3, one two)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(s -&gt; Pair.&lt;Integer,String&gt;of(s + 1, "one")).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, "two")))
+$.. ==&gt; (3, two)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(s -&gt; Pair.&lt;Integer,String&gt;of(s + 1, "one")).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,String&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,String&gt;of(s + 2, t + "two")))
+$.. ==&gt; (3, onetwo)
+
+jshell&gt; Function&lt;Integer, Pair&lt;Integer,String&gt;&gt; doit(String s) {
+   ...&gt;     return x -&gt; Pair.&lt;Integer,String&gt;of(x + s.length(), s);
+   ...&gt; }
+|  created method doit(String)
+
+jshell&gt; Function&lt;String, Aggregate&lt;Integer,String&gt;&gt; doit2(String s) {
+   ...&gt;     return x -&gt; Aggregate.&lt;Integer,String&gt;of(y -&gt; {
+   ...&gt;         Pair&lt;Integer,String&gt; pair = doit(s).apply(y);
+   ...&gt;         return Pair.&lt;Integer,String&gt;of(
+   ...&gt;            pair.first(), x + " " + pair.second());
+   ...&gt;     });
+   ...&gt; }
+|  created method doit2(String)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(doit("one"));
+$.. ==&gt; (3, one)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(doit("one")).
+   ...&gt; flatMap(doit2("two")).
+   ...&gt; map(doit("three"))
+$.. ==&gt; (11, three)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(0).
+   ...&gt; map(doit("one")).
+   ...&gt; flatMap(doit2("two")).
+   ...&gt; flatMap(doit2("three"))
+$.. ==&gt; (11, one two three)
+
+jshell&gt; Aggregate.&lt;Integer,String&gt;seed(10).
+   ...&gt; map(s -&gt; Pair.of(s + 1, "one")).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,Integer&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,Integer&gt;of(
+   ...&gt;       s + 2, t.length() + 5))).
+   ...&gt; flatMap(t -&gt; Aggregate.&lt;Integer,Circle&gt;of(
+   ...&gt;    s -&gt; Pair.&lt;Integer,Circle&gt;of(
+   ...&gt;       s + 3, new Circle(t))))
+$.. ==&gt; (16, Circle of radius 8.0)
+</pre>
+
+<p><i>You will need to tweak the signature of <tt>flatMap</tt> slightly to pass the last test.</i>
+
+
+		</p></div></div>                          
+					<div class="content-header">
+					<h3>Submission (Practice)</h3>
+			</div>
+			<div id="practiceNotification"></div>
+			<div class="panel">
+				<span class="label" style="vertical-align:top">Your Files:</span>
+				<span class="value-long">
+					<div id="plupload_container" style="position: relative;">
+						<a id="task_submission" href="javascript:;" class="submitButton" style="position: relative; z-index: 1;">BROWSE</a>
+					<div id="html5_1fivrtumemul1js716ml1ipo14b34_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: -7px; left: 0px; width: 104px; height: 28px; overflow: hidden; z-index: 0;"><input id="html5_1fivrtumemul1js716ml1ipo14b34" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".java,.c,.cpp,.h,.py,.jar,.jsh" tabindex="-1"></div></div>
+					<br>
+					<div id="filelist"></div>
+					<script type="text/javascript">
+						var uploader;
+						$(document).ready(function() {		
+							uploader = new plupload.Uploader({
+								runtimes: 'html5,flash,html4',
+								browse_button: 'task_submission',
+								container: 'plupload_container',
+								prevent_duplicates: true,
+								url: 'plupload/uploadFiles.php',
+
+								filters: {
+									max_file_size: '31457280', 
+									mime_types: [
+										{title : "Allowed files", extensions : "java,c,cpp,h,py,jar,jsh"}	
+									]
+								},
+
+								init: {
+									PostInit: function () {
+										document.getElementById('filelist').innerHTML = '';
+									},
+
+									FilesAdded: function (up, files) {
+										plupload.each(files, function(file) {
+											document.getElementById('filelist').innerHTML += 
+												'<li class="plupload_file ui-state-default plupload_delete" id="' + file.id + '" class="plupload_file_name">' +  
+													'<div class="plupload_file_status">' +
+														'<div class="plupload_file_action">' + 
+															'<div class="plupload_action_icon ui-icon ui-icon-circle-close" onclick="uploader.removeFile(uploader.getFile(\''+file.id+'\'));"> </div>' + 
+														'</div>' +
+														'<div class="plupload_file_name" title="' + file.name + '">' + 
+															'<span class="plupload_file_name_wrapper">' + file.name + '   (<i>' + plupload.formatSize(file.size) + '</i>) <b></b>' + '</span>' +
+														'</div>' +
+													'</div>' +
+												'</li>';
+										});
+										document.getElementById('filelist').innerHTML = '<ul class="plupload_filelist_content" id="uploader_filelist" unselectable="on">' + document.getElementById('filelist').innerHTML + '</ul>';
+
+									},
+
+									FilesRemoved: function(up, files) {
+										plupload.each(files, function(file) {
+											$('#' + file.id).remove();
+										});
+									},
+
+									FileUploaded: function(up, file, info) {
+										$('#' + file.id).remove();
+									},
+
+									UploadProgress: function(up, file) {
+										$('#' + file.id + ' b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+									},
+
+									UploadComplete: function(up, files) {
+										doTaskGrade();
+									},
+
+									Error: function(up, err) {
+										alert("\nError #" + err.code + ": " + err.message);
+									}
+								}
+							});
+							uploader.init();
+
+
+						});
+
+					</script><br>
+					<p><a href="javascript:uploader.setOption(&#39;multipart_params&#39;, { &#39;sess_id&#39;: &#39;lqbojnbkvu9eq1c5vclatgpfhmgguq4r&#39;, &#39;type&#39;: &#39;task_submission&#39;, &#39;tid&#39;: &#39;5043&#39;, &#39;username&#39;: &#39;e0310357&#39;, &#39;uid&#39;: &#39;17287&#39; }); javascript:uploader.start();" class="submitButton">SUBMIT</a>
+					(only .java, .c,  .cpp, .h, .jsh, and .py extensions allowed)</p>
+				</span>
+				<br>
+				<span class="label">&nbsp;</span>
+				<span class="value-long" style="font-size: 90%; color: #777;">To submit multiple files, click on the Browse button, then select one or more
+				files. The selected file(s) will be added to the upload queue. You can repeat this step to add more files. Check that you have all the files
+				needed for your submission. Then click on the Submit button to upload your submission.</span>
+			</div>
+        							<input type="hidden" id="tid" name="tid" value="5043">
+		</div>
+		<!-- end content -->
+</div>
+<!-- end inner -->
+<div id="loading-mask">
+        <p id="loading_mask_loader" class="loader" style="display: none;"> <img alt="Loading..." src="./pa2_1_files/ajax-loader-tr.gif"> <br>
+                Please wait... </p>
+</div>
+<script type="text/javascript">
+$(".star").rating({
+        focus: function(value, link) {
+                var tip = $("#rating_text");
+                tip[0].data = tip[0].data || tip.html(); 
+                tip.html(link.title || "value: " + value);
+        },
+        blur: function(value, link) {
+                var tip = $("#rating_text");
+                $("#rating_text").html(tip[0].data || "");
+        },
+        callback: function(value, link) {
+                $.ajax({
+                        type: "POST",
+                        url: "task_updaterating.php",
+                        data: ({tid:$("#tid").val(), rating:value}),
+                        success: function(html) {
+                                var msg = html.split(";");
+                                $("#rating_text").removeClass().addClass(msg[0]);
+                                $("#rating_text").html(msg[1]);
+                        }
+                });
+        }
+});
+
+function getComments() {
+        $.ajax({
+                type: "POST",
+                url: "task_getcomments.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#commentList").html(html);
+                }
+        });
+}
+
+function doTaskGrade(e, d) {
+        $.ajax({
+                type: "POST",
+                url: "doTaskGrade.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#practiceNotification").removeClass().addClass(msg[0]);
+                        $("#practiceNotification").html(msg[1]);
+                }
+        });
+
+}
+
+function doCourseTaskGrade(e, d) {
+        $.ajax({
+                type: "POST",
+                url: "doTaskGrade.php",
+                data: ({tid:$("#tid").val(), course_id:$("#course_id").val(), do_course:1}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#courseNotification").removeClass().addClass(msg[0]);
+                        $("#courseNotification").html(msg[1]);
+                }
+        });
+
+}
+
+function addComment() {
+        $.ajax({
+                type: "POST",
+                url: "task_addcomment.php",
+                data: ({tid:$("#tid").val(), comment:encodeURIComponent($("#comment").val())}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#commentNotification").removeClass().addClass(msg[0]);
+                        $("#commentNotification").html(msg[1]);
+                        
+                        getComments();
+                }
+        });
+}
+
+function deleteComment(c) {
+        $.ajax({
+                type: "POST",
+                url: "task_deletecomment.php",
+                data: ({comment_id:c}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#commentNotification").removeClass().addClass(msg[0]);
+                        $("#commentNotification").html(msg[1]);
+                        
+                        getComments();
+                }
+        });
+}
+
+function getClassify(){
+                $.ajax({
+                type: "GET",
+                url: "task_classify.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#classifyList").html(html);
+                }
+        });
+}
+
+function getTutorial(){
+        $.ajax({
+                type: "POST",
+                url: "task_gettutorials.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#tutorialList").html(html);
+                }
+        });
+}
+
+function getQueries() {
+        $.ajax({
+                type: "POST",
+                url: "task_getqueries.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#queryList").html(html);
+                }
+        });
+}
+
+function addQuery() {
+        $.ajax({
+                type: "POST",
+                url: "task_addquery.php",
+                data: ({tid:$("#tid").val(), contest_id:$("#contest_id").val(), query:encodeURIComponent($("#query").val())}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#queryNotification").removeClass().addClass(msg[0]);
+                        $("#queryNotification").html(msg[1]);
+                        
+                        getQueries();
+                }
+        });
+}
+
+function deleteQuery(q) {
+        $.ajax({
+                type: "POST",
+                url: "task_deletequery.php",
+                data: ({query_id:q}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#queryNotification").removeClass().addClass(msg[0]);
+                        $("#queryNotification").html(msg[1]);
+                        
+                        getQueries();
+                }
+        });
+}
+
+function addTag() {
+        $.ajax({
+                type: "POST",
+                url: "tag_add.php",
+                data: ({tid:$("#tid").val(), tags:$("#tagwords").val()}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#tagNotification").removeClass().addClass(msg[0]);
+                        $("#tagNotification").html(msg[1]);
+                        
+                        getClassify();
+                }
+        });
+}
+
+
+$(document).ready(function() {
+        getComments();
+        getQueries();
+        getClassify();
+        getTutorial();
+        //getCloud();
+});
+
+$(document).everyTime(60000, function(i) {
+        if ($("#tid").val() != "" && $("#tid").val() != null) {
+                $.ajax({
+                        type: "POST",
+                        url: "task_checkcontest.php",
+                        data: ({tid:$("#tid").val()}),
+                        success: function(html) {
+                                if (html == "0") {
+                                        $("#contest_submit").html("");
+                                }
+                        }
+                });
+                $.ajax({
+                        type: "POST",
+                        url: "task_checkcourse.php",
+                        data: ({tid:$("#tid").val()}),
+                        success: function(html) {
+                                if (html == "0") {
+                                        $("#course_submit").html("");
+                                }
+                        }
+                });
+        }
+}, 0);
+
+$('#loading_mask_loader')
+        .hide()  // hide it initially
+        .ajaxStart(function() {
+                $(this).show();
+        })
+        .ajaxStop(function() {
+                $(this).hide();
+        });
+        
+</script>
+
+
+</div> <!-- end outer -->
+
+</div> <!-- end container -->
+
+<!-- START NUS-Footer --> 
+<div id="nusfooter" class="nusbody">
+<div id="nusfooter_ml"><div id="nusfooter_mr">
+<div id="nusfooter_tc"><div id="nusfooter_tl"><div id="nusfooter_tr">
+<div id="nusfooter_bc"><div id="nusfooter_bl"><div id="nusfooter_br">
+<div class="inner"><div class="left"><p>© Copyright 2009-2021 National University of Singapore. All Rights Reserved.</p>  
+<p class="nusfooterlinks">
+<a href="https://www.nus.edu.sg/terms.php">Terms of Use</a> |
+<a href="https://www.nus.edu.sg/policy.php">Privacy</a> |
+<a href="https://www.nus.edu.sg/nondiscrim.php">Non-discrimination</a></p> 
+</div>    
+<div class="right">
+<a href="https://mysoc.nus.edu.sg/">MySoC</a> |
+<a href="https://docs.comp.nus.edu.sg/cf/">Computing Facilities</a> |
+<a href="https://www.nus.edu.sg/search/">Search</a> |
+<a href="https://www.nus.edu.sg/campusmap/">Campus Map</a>
+<p>School of Computing, National University of Singapore</p>
+</div>    
+<div style="clear: both;"> </div>
+</div>
+</div></div></div>
+</div></div></div>
+</div></div>
+</div>
+<!-- END NUS-Footer -->
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

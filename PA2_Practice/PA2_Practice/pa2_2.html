@@ -1,0 +1,879 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0057)https://codecrunch.comp.nus.edu.sg/task_view.php?tid=4999 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>CodeCrunch</title>
+<!-- START NUS Includes-->
+<script type="text/javascript" src="./pa2_2_files/nussearch.js"></script>
+<link rel="stylesheet" type="text/css" href="./pa2_2_files/nusbase.css" media="screen, print, projection, handheld">
+<link rel="stylesheet" type="text/css" href="./pa2_2_files/nusmenu.css" media="screen, print, projection, handheld">
+<link rel="stylesheet" type="text/css" href="./pa2_2_files/nusscreen.css" media="screen, projection, print">
+<link href="https://codecrunch.comp.nus.edu.sg/nus/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon" href="https://codecrunch.comp.nus.edu.sg/nus/blank.png">
+<!-- END NUS Includes -->
+<script type="text/javascript" src="./pa2_2_files/ajax.js"></script>
+<script type="text/javascript" src="./pa2_2_files/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./pa2_2_files/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="./pa2_2_files/jquery.tablesorter.pager.js"></script>
+<!--<script type="text/javascript" src="/js/folding.js"></script>-->
+<script type="text/javascript" src="./pa2_2_files/jquery.watermark.min.js"></script>
+<script type="text/javascript">
+            function enterPressButton(field, button) {
+                $(field).keypress(function(e){if(e.which==13)$(button).trigger("click");});
+            }
+</script>
+<link rel="stylesheet" href="./pa2_2_files/style.css" type="text/css">
+<link rel="stylesheet" href="./pa2_2_files/jquery.tablesorter.css" type="text/css">
+<script type="text/javascript" src="./pa2_2_files/jquery-1.3.2.min.js"></script>
+<!--<script type="text/javascript" src="js/folding.js"></script>-->
+<script type="text/javascript" src="./pa2_2_files/jquery.rating.js"></script>
+<script type="text/javascript" src="./pa2_2_files/behaviour.js"></script>
+<script type="text/javascript" src="./pa2_2_files/textarea_maxlen.js"></script>
+<script type="text/javascript" src="./pa2_2_files/jquery.timer.js"></script>
+
+<script type="text/javascript" src="./pa2_2_files/plupload.full.min.js"></script>
+
+<link rel="stylesheet" href="./pa2_2_files/jquery.rating.css" type="text/css">
+<link rel="stylesheet" href="./pa2_2_files/style.css" type="text/css">
+<link rel="stylesheet" href="./pa2_2_files/tagcloud.css" type="text/css">
+<link rel="stylesheet" href="./pa2_2_files/jquery-ui-1.7.2.custom.css" type="text/css">
+
+<link rel="stylesheet" href="./pa2_2_files/jquery.ui.plupload.css" type="text/css">
+
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1035.0" data-gr-ext-installed="">
+<!-- START NUS-Header -->
+
+<!-- NUS Header -->
+<div id="nusheader" class="nusbody">
+<div class="nuslogodiv">
+<a href="https://www.nus.edu.sg/">
+<img class="nuslogo" src="./pa2_2_files/soclogo.png" alt="">
+</a>
+</div>
+<div id="nuspointermenu">
+<ul>
+<li><a href="https://exchange.nus.edu.sg/"><span style="text-transform:none">NUS WebMail</span></a></li>
+<li><a href="https://ivle.nus.edu.sg/lms/default.aspx">ivle</a></li>
+<li><a href="https://www.lib.nus.edu.sg/">library</a></li>
+<li><a href="https://www.nus.edu.sg/campusmap/">maps</a></li>
+<!--<li><a href="https://aces01.nus.edu.sg/CoE/jsp/coeMain.jsp">calendar</a></li>-->
+<!--<li><a href="/sitemap">sitemap</a></li>-->
+<!--<li><a href="#">a-z index</a></li>-->
+<!--<li><a href="/contact">contact</a></li>-->
+<li><a href="https://codecrunch.comp.nus.edu.sg/task_view.php?tid=4999#" id="rightcorner">&nbsp;</a></li>
+</ul>
+<br style="clear: left">
+</div>
+<div id="searchform">
+<script src="./pa2_2_files/nussearch.js" type="text/javascript"></script>
+<form id="frmSearch" onsubmit="evalSearch();return false" action="https://codecrunch.comp.nus.edu.sg/task_view.php?tid=4999"><div>
+<a href="https://www.nus.edu.sg/search/" style="text-decoration:none; font-size:11px; font-weight:bold; color:#666666">Search </a>
+<input id="txtKeyword" type="text" value="search for..." onfocus="value=&#39;&#39;" class="equal" size="18">
+in
+<select id="SearchMenu" name="SearchMenu">
+<option selected="selected" value="0">NUS Websites</option>
+<option value="1">Internet</option>
+<option value="2">Staff Directory</option>
+<option value="3">Advanced Search</option>
+</select>
+<input class="equal" id="Go" src="./pa2_2_files/go.png" type="image">
+</div></form>
+</div>
+</div>
+
+<!-- NUS Local-Navigation --><!--
+<div id="nusmenu" class="nusbody"><div id="nusmenu_l"><div id="nusmenu_r">
+<ul>
+  <li><a href="http://www.comp.nus.edu.sg/index.html">Home</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/about.html">About Us</a></li>
+  <li><a class="drop" href="javascript:;">Departments</a>
+    <ul>
+      <li><a href="http://www.comp.nus.edu.sg/cs" >Computer Science</a></li>
+      <li><a href="http://www.comp.nus.edu.sg/is/" >Information Systems</a></li>
+    </ul>
+  </li>
+  <li><a href="http://www.comp.nus.edu.sg/undergraduates" >Undergraduate</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/graduates" >Graduate</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/research" >Research</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/entrepreneurship" >Entrepreneurship</a></li>
+  <li><a href="http://www.stmi.nus.edu.sg" >Executive Education</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/external_relations" >External Relations</a></li>
+</ul>
+</div></div></div>
+-->
+
+<!-- NUS Inner-Title -->
+<div id="nustitle" class="nusbody"><div id="nustitle_l"><div id="nustitle_r">
+              <h1 id="site-name">
+                <a href="https://codecrunch.comp.nus.edu.sg/" title="Home" rel="home">CodeCrunch</a>
+              </h1>
+</div></div></div>
+
+<!-- END NUS-Header -->
+
+<div id="banner">
+        <div id="topmenu">
+        <div id="login">
+                Logged in as: <strong>e0310357</strong>
+                </div>
+                <div style="display: block;"><ul>
+                                        <li><a href="https://codecrunch.comp.nus.edu.sg/index.php">Home</a></li>
+                                                    <li><a href="https://codecrunch.comp.nus.edu.sg/course_viewall.php">Courses</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/tutorial_viewall.php">Tutorials</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/task_viewall.php">Tasks</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/tutorial_browser.php">Browse Tutorials</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/user_viewsubmissions.php">My Submissions</a></li>
+                                                                <li><a href="https://codecrunch.comp.nus.edu.sg/tools.php">Tools</a></li>
+                                                <li><a href="https://codecrunch.comp.nus.edu.sg/logout_process.php">Logout</a></li>
+                            </ul></div>
+        </div>
+</div>
+<div id="container">
+<div id="outer">
+<div id="inner">
+	<div id="content_full">                         
+		<div class="content-header"><h3>CS2030/S (2010) Practical Assessment #2: Zork!!</h3></div>
+		<div class="spacer"></div>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tbody><tr><td valign="top" style="width: 30%;">
+				<div class="meta_header">Tags &amp; Categories</div>
+				<div id="classifyList"><span class="value">Tags:
+</span>
+<span class="value">Categories:
+</span></div>
+			</td>
+			<td valign="top" style="width: 40%;">
+				<div class="meta_header">Related Tutorials</div>
+				<div id="tutorialList"></div>
+			</td>
+			<td valign="top" style="width: 30%;">
+			</td>
+			</tr>
+		</tbody></table>
+		<div class="content-header">
+			<h3>Task Content
+							</h3>
+		</div>                          
+		<div class="panel"><div class="task-content">
+		<h3>Zork!!</h3>
+<!--
+<h4>Topic Coverage</h4>
+<ul>
+</ul>
+-->
+<p><strong>This PE is worth 20% of your grade. You must work on it alone, without discussing with anyone (whether online or offline).</strong></p>
+<h4>Problem Description</h4>
+<p>If you think that a computer game requires stunning graphics, or least, cute ones, to be captivating, then you haven't played Zork.  Created in the late 1970s, before sound cards or graphics cards were invented, Zork was a text-only adventure game famed for its storytelling and advanced text parser.  In it, you play the role of an explorer plonked in front of a house, surrounded by a forest, with no hint of what your goal might be: whether to rescue an imprisoned princess, or to find hidden treasure.</p>
+<p>You interact by typing commands, such as "GO NORTH", or "HIT THE TROLL WITH THE ELVISH SWORD", and the game responds with textual descriptions, such as "Phosphorescent mosses, fed by a trickle of water from some unseen source above, make the crystal grotto glow and sparkle with every color of the rainbow”.  These words spark one's imagination of mystery, fear, and adventure in ways that graphics and sound cannot.</p>
+<p>Its commercial launch was a great success, spawning a trilogy (because otherwise the entire game could not fit into computer memory) that in total sold over 800,000 copies, and keeping it among the "Top 50 Games of All Time" even twenty years later. Zork foreshadowed, and influenced, the development of modern AI chatbots.</p>
+<p>In this Practical Assessment (PA), you will create the basic game elements in Zork.  While keeping it simple to fit the needs of a PA, there is great scope for future development into a much richer project for educational purpose (<em>read: talk to the Profs if you are interested</em>).</p>
+<h4>Task</h4>
+<p>In this task, you are only required to work with three things: a candle, a sword and a troll. These things are placed at possibly different rooms. The objective is to simulate and test different scenarios of game play.  Take note of the following:</p>
+<ul>
+<li>all Java objects constructed are to be <em>immutable</em>; </li>
+<li>for simplicity, at no time will there be multiple things of the same type </li>
+</ul>
+<p>This task is divided into several levels.  You need to complete all levels. Read through all the levels  to see how the different levels are related.</p>
+<p>Remember to:</p>
+<ul>
+<li>write each class/interface/enum in a separate <tt>.java</tt> file </li>
+<li>always compile your program files first before using <tt>jshell</tt> to test your program </li>
+<li>declare object properties starting with <tt>private final</tt> or <tt>protected final</tt> </li>
+<li>you may import any Java package; however do not use the wild card <tt>*</tt> in your import statements, else CodeCrunch will render your program uncompilable </li>
+<li>all tests use valid arguments; you need not check for validity of arguments; <tt>null</tt> will not be used for the tests <!--
+<li>use <tt>checkstyle</tt> and <tt>javadoc</tt> comments to enhance code readability and facilitating code review --> </li>
+</ul>
+<p><!-- 
+<table border=1 cellpadding=10>
+<tr>
+<td>--></p>
+<h4>Level 1</h4>
+<p>Write a class <tt>Room</tt> to represent a room in the game. Things can be placed in a room. In this level, we shall place a <tt>Candle</tt> in the foyer. To simulate the passing of time, a method <tt>tick()</tt> in class <tt>Room</tt> is called.</p>
+<p>With respect to the candle, every tick causes the candle to change state.The following are the state changes of the candle.</p>
+<ul>
+<li><tt>Candle flickers.</tt> </li>
+<li><tt>Candle is getting shorter.</tt> </li>
+<li><tt>Candle is about to burn out.</tt> </li>
+<li><tt>Candle has burned out.</tt> </li>
+</ul>
+<p>Note that any <tt>tick</tt>s beyond the last state of the candle causes it to remain in it's final state. Also, make sure that <tt>Room</tt> does not sub-class from any other class (apart from <tt>Object</tt> of course).</p>
+<p>&nbsp;</p>
+<pre>$ javac your_java_files
+$ jshell -q your_java_files_in_bottom-up_dependency_order &lt; test1.jsh
+<strong>jshell&gt; new Room("foyer");</strong>
+$.. ==&gt; @foyer
+<strong>jshell&gt; new Room("foyer").add(new Candle());</strong>
+$.. ==&gt; @foyer
+Candle flickers.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).tick()</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).tick().tick()</strong>
+$.. ==&gt; @foyer
+Candle is about to burn out.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).tick().tick().tick()</strong>
+$.. ==&gt; @foyer
+Candle has burned out.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).tick().tick().tick().tick()</strong>
+$.. ==&gt; @foyer
+Candle has burned out.
+<strong>jshell&gt; /exit</strong>
+</pre>
+<h4>Level 2</h4>
+<p>Let's now include two more things, <tt>Troll</tt> and <tt>Sword</tt>, into our room. Just like the candle, each of these things have their own states:</p>
+<ul>
+<li>For the Troll: 
+<ul>
+<li><tt>Troll lurks in the shadows.</tt> </li>
+<li><tt>Troll is getting hungry.</tt> </li>
+<li><tt>Troll is VERY hungry.</tt> </li>
+<li><tt>Troll is SUPER HUNGRY and is about to ATTACK!</tt> </li>
+<li><tt>Troll attacks!</tt> </li>
+</ul>
+</li>
+<li>For the Sword: 
+<ul>
+<li><tt>Sword is shimmering.</tt> </li>
+</ul>
+</li>
+</ul>
+<p>Things are output in order of which they are added into the room. Also note that your program should be flexible enough for other things to be included in future.</p>
+<pre>$ javac your_java_files
+$ jshell -q your_java_files_in_bottom-up_dependency_order &lt; test2.jsh
+<strong>jshell&gt; Room foyer = new Room("foyer").add(new Candle()).add(new Troll())</strong>
+<strong>jshell&gt; Stream.iterate(foyer, x -&gt; x.tick()).limit(6).forEach(System.out::println)</strong>
+@foyer
+Candle flickers.
+Troll lurks in the shadows.
+@foyer
+Candle is getting shorter.
+Troll is getting hungry.
+@foyer
+Candle is about to burn out.
+Troll is VERY hungry.
+@foyer
+Candle has burned out.
+Troll is SUPER HUNGRY and is about to ATTACK!
+@foyer
+Candle has burned out.
+Troll attacks!
+@foyer
+Candle has burned out.
+Troll attacks!
+<strong>jshell&gt; foyer = foyer.add(new Sword())</strong>
+<strong>jshell&gt; Stream.iterate(foyer, x -&gt; x.tick()).limit(3).forEach(System.out::println)</strong>
+@foyer
+Candle flickers.
+Troll lurks in the shadows.
+Sword is shimmering.
+@foyer
+Candle is getting shorter.
+Troll is getting hungry.
+Sword is shimmering.
+@foyer
+Candle is about to burn out.
+Troll is VERY hungry.
+Sword is shimmering.
+<strong>jshell&gt; foyer</strong>
+foyer ==&gt; @foyer
+Candle flickers.
+Troll lurks in the shadows.
+Sword is shimmering.
+<strong>jshell&gt; /exit</strong>
+</pre>
+<h4>Level 3</h4>
+<p>Now, we are ready to interact with the objects. An interaction occurs by passing an action into an overloaded <tt>tick</tt> method that takes one argument. The action is in the form of a lambda that describes what actions to take on one or more things.</p>
+<p>As an example, we can pass a dummy action <tt>x -&gt; x</tt> (the identity lambda) into <tt>tick</tt>. The test will take the following form:</p>
+<pre><strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Sword()).tick(x -&gt; x)</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+Sword is shimmering.
+</pre>
+<p>As you can see, applying the dummy action above results in the same behaviour as</p>
+<pre><strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Sword()).tick()</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+Sword is shimmering.
+</pre>
+<p>In addition, write the action <tt>takeSword</tt> into the file <tt>actions.jsh</tt>.   Note that this will result in three different outputs (see sample run below) according to the state of things in the room. These output (prepended with <tt>"--&gt;"</tt>) must be specified within <tt>actions.jsh</tt> and not in the individual classes. You may choose any suitable types for the lambda.</p>
+<pre>$ javac your_java_files
+$ jshell -q your_java_files_in_bottom-up_dependency_order actions.jsh &lt; test3.jsh
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Sword()).tick(x -&gt; x)</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Sword()).tick(x -&gt; x).tick(x -&gt; x)</strong>
+$.. ==&gt; @foyer
+Candle is about to burn out.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Sword()).tick(takeSword)</strong>
+--&gt; You have taken sword.
+$.. ==&gt; @foyer
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Sword()).tick(takeSword).tick(takeSword)</strong>
+--&gt; You have taken sword.
+--&gt; You already have sword.
+$.. ==&gt; @foyer
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").tick(takeSword)</strong>
+--&gt; There is no sword.
+$.. ==&gt; @foyer
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick()</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+Troll is getting hungry.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick(x -&gt; x)</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+Troll is getting hungry.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick().tick(x -&gt; x)</strong>
+$.. ==&gt; @foyer
+Candle is about to burn out.
+Troll is VERY hungry.
+Sword is shimmering.
+<strong>jshell&gt; /exit</strong>
+</pre>
+<h4>Level 4</h4>
+<p>Now add another action <tt>killTroll</tt> into <tt>actions.jsh</tt>. Look at the sample runs below for the behaviour of the action. Once again, the output (prepended with <tt>"--&gt;"</tt>) must be specified in <tt>actions.jsh</tt> and not in the respective class files. Also note that a killed troll will vanish from the room.</p>
+<pre>$ javac your_java_files
+$ jshell -q your_java_files_in_bottom-up_dependency_order actions.jsh &lt; test4.jsh
+<strong>jshell&gt; new Room("foyer").add(new Sword()).tick(killTroll)</strong>
+--&gt; There is no troll
+$.. ==&gt; @foyer
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Sword()).add(new Troll()).tick(killTroll)</strong>
+--&gt; You have no sword.
+$.. ==&gt; @foyer
+Sword is shimmering.
+Troll is getting hungry.
+<strong>jshell&gt; new Room("foyer").add(new Sword()).add(new Troll()).tick(takeSword).tick(killTroll)</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+$.. ==&gt; @foyer
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick().tick(takeSword)</strong>
+--&gt; You have taken sword.
+$.. ==&gt; @foyer
+Candle is about to burn out.
+Troll is VERY hungry.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick().tick(takeSword).tick(killTroll)</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+$.. ==&gt; @foyer
+Candle has burned out.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick().tick(killTroll)</strong>
+--&gt; You have no sword.
+$.. ==&gt; @foyer
+Candle is about to burn out.
+Troll is VERY hungry.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick().tick(killTroll).tick(takeSword)</strong>
+--&gt; You have no sword.
+--&gt; You have taken sword.
+$.. ==&gt; @foyer
+Candle has burned out.
+Troll is SUPER HUNGRY and is about to ATTACK!
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).add(new Sword()).tick().tick(killTroll).tick(takeSword).tick(killTroll)</strong>
+--&gt; You have no sword.
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+$.. ==&gt; @foyer
+Candle has burned out.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Candle()).add(new Troll()).tick(killTroll)</strong>
+--&gt; You have no sword.
+$.. ==&gt; @foyer
+Candle is getting shorter.
+Troll is getting hungry.
+<strong>jshell&gt; /exit</strong>
+</pre>
+<h4>Level 5</h4>
+<p>We are now ready to venture into other rooms.   Going into a room requires that a room be created first. This is done via the <tt>go</tt> method that takes in another lambda of the form <tt>x -&gt; new Room...</tt>.  As an example, we can represent <em>deja vu</em> with the following test:</p>
+<pre><strong>jshell&gt; new Room("dining").add(new Candle()).add(new Sword())</strong>
+$.. ==&gt; @dining
+Candle flickers.
+Sword is shimmering.
+<strong>jshell&gt; new Room("dining").add(new Candle()).add(new Sword()).go(x -&gt; new Room("mystery", x))</strong>
+$.. ==&gt; @mystery
+Candle flickers.
+Sword is shimmering.
+</pre>
+<p>Notice that this new mystery room that we just entered looks like the same room before! Not only that we can also bring an item that we picked into a new room.</p>
+<pre><strong>jshell&gt; new Room("foyer").add(new Sword()).tick(takeSword).go(x -&gt; new Room("dining").add(new Candle()))</strong>
+--&gt; You have taken sword.
+$.. ==&gt; @dining
+Sword is shimmering.
+Candle flickers.
+</pre>
+<p>Note that things brought into a new room are listed first.</p>
+<pre>$ javac your_java_files
+$ jshell -q your_java_files_in_bottom-up_dependency_order actions.jsh &lt; test5.jsh
+<strong>jshell&gt; new Room("dining").add(new Candle()).add(new Sword())</strong>
+$.. ==&gt; @dining
+Candle flickers.
+Sword is shimmering.
+<strong>jshell&gt; new Room("dining").add(new Candle()).add(new Sword()).go(x -&gt; new Room("mystery", x))</strong>
+$.. ==&gt; @mystery
+Candle flickers.
+Sword is shimmering.
+<strong>jshell&gt; new Room("dining").add(new Candle()).tick().add(new Sword()).go(x -&gt; new Room("mystery", x))</strong>
+$.. ==&gt; @mystery
+Candle is getting shorter.
+Sword is shimmering.
+<strong>jshell&gt; new Room("foyer").add(new Sword()).tick(takeSword).go(x -&gt; new Room("dining").add(new Candle()))</strong>
+--&gt; You have taken sword.
+$.. ==&gt; @dining
+Sword is shimmering.
+Candle flickers.
+<strong>jshell&gt; Room r1 = new Room("foyer").add(new Candle())</strong>
+<strong>jshell&gt; Room r2 = r1.go(x -&gt; new Room("library").add(new Sword()))</strong>
+<strong>jshell&gt; Room r3 = r2.go(x -&gt; new Room("dining").add(new Troll()))</strong>
+<strong>jshell&gt; r3.tick(killTroll)</strong>
+--&gt; You have no sword.
+$.. ==&gt; @dining
+Troll is getting hungry.
+<strong>jshell&gt; r2.tick(takeSword).go(x -&gt; new Room("dining").add(new Candle()).add(new Troll()))</strong>
+--&gt; You have taken sword.
+$.. ==&gt; @dining
+Sword is shimmering.
+Candle flickers.
+Troll lurks in the shadows.
+<strong>jshell&gt; r2.tick(takeSword).go(x -&gt; new Room("dining").add(new Candle()).add(new Troll())).tick(killTroll)</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+$.. ==&gt; @dining
+Sword is shimmering.
+Candle is getting shorter.
+<strong>jshell&gt; r1.go(x -&gt; new Room("library").</strong>
+<strong>   ...&gt; add(new Sword()).</strong>
+<strong>   ...&gt; tick(takeSword).</strong>
+<strong>   ...&gt; go(y -&gt; new Room("dining").add(new Candle()).add(new Troll()))).tick(killTroll)</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+$.. ==&gt; @dining
+Sword is shimmering.
+Candle is getting shorter.
+<strong>jshell&gt; /exit</strong>
+
+</pre>
+<h4>Level 6</h4>
+<p>Finally, we would like to go back to the previous rooms. For simplicity, once we come back from a room, the room that we came back from vanishes, so we can't go into it again. Note that when you return from room B to room A, things in room A are output first, followed by B (this is to be consistent with the output in the previous level dealing with <tt>go</tt>). That is to say, things in the room that is created earlier are always listed first. Also note that once we enter into a new room, and return from it, time in the original room ticks only once.</p>
+<p>Lastly, add an action <tt>dropSword</tt> to drop the sword.</p>
+<pre>$ javac your_java_files
+$ jshell -q your_java_files_in_bottom-up_dependency_order actions.jsh &lt; test6.jsh
+<strong>jshell&gt; Room r1 = new Room("foyer").add(new Candle())</strong>
+<strong>jshell&gt; Room r2 = r1.go(x -&gt; new Room("dining").add(new Troll()))</strong>
+<strong>jshell&gt; Room r3 = r2.go(x -&gt; new Room("library").add(new Sword()))</strong>
+<strong>jshell&gt; r1</strong>
+r1 ==&gt; @foyer
+Candle flickers.
+<strong>jshell&gt; r2</strong>
+r2 ==&gt; @dining
+Troll lurks in the shadows.
+<strong>jshell&gt; r2.back()</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+<strong>jshell&gt; r2.tick().tick().tick()</strong>
+$.. ==&gt; @dining
+Troll is SUPER HUNGRY and is about to ATTACK!
+<strong>jshell&gt; r2.tick().tick().tick().back()</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+<strong>jshell&gt; r3</strong>
+r3 ==&gt; @library
+Sword is shimmering.
+<strong>jshell&gt; r3.back()</strong>
+$.. ==&gt; @dining
+Troll is getting hungry.
+<strong>jshell&gt; r3.back().back()</strong>
+$.. ==&gt; @foyer
+Candle is getting shorter.
+<strong>jshell&gt; r3.tick(takeSword).back().tick(killTroll).back()</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+$.. ==&gt; @foyer
+Candle is getting shorter.
+Sword is shimmering.
+<strong>jshell&gt; r3.tick(takeSword).back().tick(killTroll).tick(dropSword)</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+--&gt; You have dropped sword.
+$.. ==&gt; @dining
+Sword is shimmering.
+<strong>jshell&gt; r3.tick(takeSword).back().tick(killTroll).tick(dropSword).back()</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+--&gt; You have dropped sword.
+$.. ==&gt; @foyer
+Candle is getting shorter.
+<strong>jshell&gt; r1.go(x -&gt; new Room("dining").add(new Troll())).</strong>
+<strong>   ...&gt; tick().</strong>
+<strong>   ...&gt; go(x -&gt; new Room("library").add(new Sword())).</strong>
+<strong>   ...&gt; tick().</strong>
+<strong>   ...&gt; tick(takeSword).</strong>
+<strong>   ...&gt; back().</strong>
+<strong>   ...&gt; tick().</strong>
+<strong>   ...&gt; tick(killTroll)</strong>
+--&gt; You have taken sword.
+--&gt; Troll is killed.
+$.. ==&gt; @dining
+Sword is shimmering.
+<strong>jshell&gt; /exit</strong>
+</pre>		</div></div>                          
+					<div class="content-header">
+					<h3>Submission (Practice)</h3>
+			</div>
+			<div id="practiceNotification"></div>
+			<div class="panel">
+				<span class="label" style="vertical-align:top">Your Files:</span>
+				<span class="value-long">
+					<div id="plupload_container" style="position: relative;">
+						<a id="task_submission" href="javascript:;" class="submitButton" style="position: relative; z-index: 1;">BROWSE</a>
+					<div id="html5_1fivrs6b95osqgrumt6pgtek4_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: -7px; left: 0px; width: 104px; height: 28px; overflow: hidden; z-index: 0;"><input id="html5_1fivrs6b95osqgrumt6pgtek4" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".java,.c,.cpp,.h,.py,.jar,.jsh" tabindex="-1"></div></div>
+					<br>
+					<div id="filelist"></div>
+					<script type="text/javascript">
+						var uploader;
+						$(document).ready(function() {		
+							uploader = new plupload.Uploader({
+								runtimes: 'html5,flash,html4',
+								browse_button: 'task_submission',
+								container: 'plupload_container',
+								prevent_duplicates: true,
+								url: 'plupload/uploadFiles.php',
+
+								filters: {
+									max_file_size: '31457280', 
+									mime_types: [
+										{title : "Allowed files", extensions : "java,c,cpp,h,py,jar,jsh"}	
+									]
+								},
+
+								init: {
+									PostInit: function () {
+										document.getElementById('filelist').innerHTML = '';
+									},
+
+									FilesAdded: function (up, files) {
+										plupload.each(files, function(file) {
+											document.getElementById('filelist').innerHTML += 
+												'<li class="plupload_file ui-state-default plupload_delete" id="' + file.id + '" class="plupload_file_name">' +  
+													'<div class="plupload_file_status">' +
+														'<div class="plupload_file_action">' + 
+															'<div class="plupload_action_icon ui-icon ui-icon-circle-close" onclick="uploader.removeFile(uploader.getFile(\''+file.id+'\'));"> </div>' + 
+														'</div>' +
+														'<div class="plupload_file_name" title="' + file.name + '">' + 
+															'<span class="plupload_file_name_wrapper">' + file.name + '   (<i>' + plupload.formatSize(file.size) + '</i>) <b></b>' + '</span>' +
+														'</div>' +
+													'</div>' +
+												'</li>';
+										});
+										document.getElementById('filelist').innerHTML = '<ul class="plupload_filelist_content" id="uploader_filelist" unselectable="on">' + document.getElementById('filelist').innerHTML + '</ul>';
+
+									},
+
+									FilesRemoved: function(up, files) {
+										plupload.each(files, function(file) {
+											$('#' + file.id).remove();
+										});
+									},
+
+									FileUploaded: function(up, file, info) {
+										$('#' + file.id).remove();
+									},
+
+									UploadProgress: function(up, file) {
+										$('#' + file.id + ' b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+									},
+
+									UploadComplete: function(up, files) {
+										doTaskGrade();
+									},
+
+									Error: function(up, err) {
+										alert("\nError #" + err.code + ": " + err.message);
+									}
+								}
+							});
+							uploader.init();
+
+
+						});
+
+					</script><br>
+					<p><a href="javascript:uploader.setOption(&#39;multipart_params&#39;, { &#39;sess_id&#39;: &#39;lqbojnbkvu9eq1c5vclatgpfhmgguq4r&#39;, &#39;type&#39;: &#39;task_submission&#39;, &#39;tid&#39;: &#39;4999&#39;, &#39;username&#39;: &#39;e0310357&#39;, &#39;uid&#39;: &#39;17287&#39; }); javascript:uploader.start();" class="submitButton">SUBMIT</a>
+					(only .java, .c,  .cpp, .h, .jsh, and .py extensions allowed)</p>
+				</span>
+				<br>
+				<span class="label">&nbsp;</span>
+				<span class="value-long" style="font-size: 90%; color: #777;">To submit multiple files, click on the Browse button, then select one or more
+				files. The selected file(s) will be added to the upload queue. You can repeat this step to add more files. Check that you have all the files
+				needed for your submission. Then click on the Submit button to upload your submission.</span>
+			</div>
+        							<input type="hidden" id="tid" name="tid" value="4999">
+		</div>
+		<!-- end content -->
+</div>
+<!-- end inner -->
+<div id="loading-mask">
+        <p id="loading_mask_loader" class="loader" style="display: none;"> <img alt="Loading..." src="./pa2_2_files/ajax-loader-tr.gif"> <br>
+                Please wait... </p>
+</div>
+<script type="text/javascript">
+$(".star").rating({
+        focus: function(value, link) {
+                var tip = $("#rating_text");
+                tip[0].data = tip[0].data || tip.html(); 
+                tip.html(link.title || "value: " + value);
+        },
+        blur: function(value, link) {
+                var tip = $("#rating_text");
+                $("#rating_text").html(tip[0].data || "");
+        },
+        callback: function(value, link) {
+                $.ajax({
+                        type: "POST",
+                        url: "task_updaterating.php",
+                        data: ({tid:$("#tid").val(), rating:value}),
+                        success: function(html) {
+                                var msg = html.split(";");
+                                $("#rating_text").removeClass().addClass(msg[0]);
+                                $("#rating_text").html(msg[1]);
+                        }
+                });
+        }
+});
+
+function getComments() {
+        $.ajax({
+                type: "POST",
+                url: "task_getcomments.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#commentList").html(html);
+                }
+        });
+}
+
+function doTaskGrade(e, d) {
+        $.ajax({
+                type: "POST",
+                url: "doTaskGrade.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#practiceNotification").removeClass().addClass(msg[0]);
+                        $("#practiceNotification").html(msg[1]);
+                }
+        });
+
+}
+
+function doCourseTaskGrade(e, d) {
+        $.ajax({
+                type: "POST",
+                url: "doTaskGrade.php",
+                data: ({tid:$("#tid").val(), course_id:$("#course_id").val(), do_course:1}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#courseNotification").removeClass().addClass(msg[0]);
+                        $("#courseNotification").html(msg[1]);
+                }
+        });
+
+}
+
+function addComment() {
+        $.ajax({
+                type: "POST",
+                url: "task_addcomment.php",
+                data: ({tid:$("#tid").val(), comment:encodeURIComponent($("#comment").val())}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#commentNotification").removeClass().addClass(msg[0]);
+                        $("#commentNotification").html(msg[1]);
+                        
+                        getComments();
+                }
+        });
+}
+
+function deleteComment(c) {
+        $.ajax({
+                type: "POST",
+                url: "task_deletecomment.php",
+                data: ({comment_id:c}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#commentNotification").removeClass().addClass(msg[0]);
+                        $("#commentNotification").html(msg[1]);
+                        
+                        getComments();
+                }
+        });
+}
+
+function getClassify(){
+                $.ajax({
+                type: "GET",
+                url: "task_classify.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#classifyList").html(html);
+                }
+        });
+}
+
+function getTutorial(){
+        $.ajax({
+                type: "POST",
+                url: "task_gettutorials.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#tutorialList").html(html);
+                }
+        });
+}
+
+function getQueries() {
+        $.ajax({
+                type: "POST",
+                url: "task_getqueries.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#queryList").html(html);
+                }
+        });
+}
+
+function addQuery() {
+        $.ajax({
+                type: "POST",
+                url: "task_addquery.php",
+                data: ({tid:$("#tid").val(), contest_id:$("#contest_id").val(), query:encodeURIComponent($("#query").val())}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#queryNotification").removeClass().addClass(msg[0]);
+                        $("#queryNotification").html(msg[1]);
+                        
+                        getQueries();
+                }
+        });
+}
+
+function deleteQuery(q) {
+        $.ajax({
+                type: "POST",
+                url: "task_deletequery.php",
+                data: ({query_id:q}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#queryNotification").removeClass().addClass(msg[0]);
+                        $("#queryNotification").html(msg[1]);
+                        
+                        getQueries();
+                }
+        });
+}
+
+function addTag() {
+        $.ajax({
+                type: "POST",
+                url: "tag_add.php",
+                data: ({tid:$("#tid").val(), tags:$("#tagwords").val()}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#tagNotification").removeClass().addClass(msg[0]);
+                        $("#tagNotification").html(msg[1]);
+                        
+                        getClassify();
+                }
+        });
+}
+
+
+$(document).ready(function() {
+        getComments();
+        getQueries();
+        getClassify();
+        getTutorial();
+        //getCloud();
+});
+
+$(document).everyTime(60000, function(i) {
+        if ($("#tid").val() != "" && $("#tid").val() != null) {
+                $.ajax({
+                        type: "POST",
+                        url: "task_checkcontest.php",
+                        data: ({tid:$("#tid").val()}),
+                        success: function(html) {
+                                if (html == "0") {
+                                        $("#contest_submit").html("");
+                                }
+                        }
+                });
+                $.ajax({
+                        type: "POST",
+                        url: "task_checkcourse.php",
+                        data: ({tid:$("#tid").val()}),
+                        success: function(html) {
+                                if (html == "0") {
+                                        $("#course_submit").html("");
+                                }
+                        }
+                });
+        }
+}, 0);
+
+$('#loading_mask_loader')
+        .hide()  // hide it initially
+        .ajaxStart(function() {
+                $(this).show();
+        })
+        .ajaxStop(function() {
+                $(this).hide();
+        });
+        
+</script>
+
+
+</div> <!-- end outer -->
+
+</div> <!-- end container -->
+
+<!-- START NUS-Footer --> 
+<div id="nusfooter" class="nusbody">
+<div id="nusfooter_ml"><div id="nusfooter_mr">
+<div id="nusfooter_tc"><div id="nusfooter_tl"><div id="nusfooter_tr">
+<div id="nusfooter_bc"><div id="nusfooter_bl"><div id="nusfooter_br">
+<div class="inner"><div class="left"><p>© Copyright 2009-2021 National University of Singapore. All Rights Reserved.</p>  
+<p class="nusfooterlinks">
+<a href="https://www.nus.edu.sg/terms.php">Terms of Use</a> |
+<a href="https://www.nus.edu.sg/policy.php">Privacy</a> |
+<a href="https://www.nus.edu.sg/nondiscrim.php">Non-discrimination</a></p> 
+</div>    
+<div class="right">
+<a href="https://mysoc.nus.edu.sg/">MySoC</a> |
+<a href="https://docs.comp.nus.edu.sg/cf/">Computing Facilities</a> |
+<a href="https://www.nus.edu.sg/search/">Search</a> |
+<a href="https://www.nus.edu.sg/campusmap/">Campus Map</a>
+<p>School of Computing, National University of Singapore</p>
+</div>    
+<div style="clear: both;"> </div>
+</div>
+</div></div></div>
+</div></div></div>
+</div></div>
+</div>
+<!-- END NUS-Footer -->
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

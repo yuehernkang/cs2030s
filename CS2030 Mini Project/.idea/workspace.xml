@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da2a46ab-8f46-4623-8dc4-f9b8c2cbc380" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/CS2030 Mini Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InfiniteList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InfiniteListImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Labs/Lab3/Lab3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/EventHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/EventHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Labs/Lab3/RubikFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Labs/Lab3/RubikFront.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InfiniteList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lazy.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lazy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main5.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
