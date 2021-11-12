@@ -1,6 +1,7 @@
 package cs2030.simulator;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class EventHandler {
     private final Event event;
@@ -204,15 +205,10 @@ public class EventHandler {
      * @return if there are any self-checkout counters available
      */
     boolean selfCheckoutAvailable(int maxQueueLength) {
-//        int totalQueueSize = this.serverList
-//                .stream()
-//                .filter(s -> s.getServerType() != ServerType.SELFCHECKOUT)
-//                .mapToInt(Server::getQueueSize)
-//                .reduce(0, Integer::sum);
-        int totalQueueSize = 0;
-        for (Server s : this.serverList) {
-            if (s.getServerType() == ServerType.SELFCHECKOUT) totalQueueSize += s.getQueueSize();
-        }
+        int totalQueueSize = this.serverList
+                .stream()
+                .filter(s -> s.getServerType() == ServerType.SELFCHECKOUT)
+                .collect(Collectors.summingInt(Server::getQueueSize));
         return totalQueueSize >= maxQueueLength;
     }
 
