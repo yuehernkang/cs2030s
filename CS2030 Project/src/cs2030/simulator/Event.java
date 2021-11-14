@@ -80,6 +80,7 @@ public class Event {
         this.serverId = 0;
         this.eventState = EventState.FINISH;
         this.serviceTime = () -> 0.0;
+        this.cache = new ArrayList<>();
         this.customerType = CustomerType.NORMAL;
     }
 
@@ -113,46 +114,46 @@ public class Event {
         return this.cache.get(0);
     }
 
-    @Override
-    public String toString() {
-        String statement = "";
-        String greedyState = this.customerType == CustomerType.GREEDY ? "(greedy)":"";
-        switch (this.eventState){
-            case ARRIVAL: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " arrives";
-                break;
-            }
-            case SERVE: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " serves by server " + this.getServerId();
-                break;
-            }
-            case SERVEBYSELFCHECKOUT: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " serves by self-check " + this.getServerId();
-                break;
-            }
-            case WAIT: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " waits at server " + this.getServerId();
-                break;
-            }
-            case WAITSELFCHECKOUT: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " waits at self-check " + this.getServerId();
-                break;
-            }
-            case DONESELFCHECKOUT: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " done serving by self-check " + this.getServerId();
-                break;
-            }
-            case DONE: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " done serving by server " + this.getServerId();
-                break;
-            }
-            case LEAVE: {
-                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " leaves";
-                break;
-            }
-        }
-        return statement;
-    }
+//    @Override
+//    public String toString() {
+//        String statement = "";
+//        String greedyState = this.customerType == CustomerType.GREEDY ? "(greedy)":"";
+//        switch (this.eventState){
+//            case ARRIVAL: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " arrives";
+//                break;
+//            }
+//            case SERVE: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " serves by server " + this.getServerId();
+//                break;
+//            }
+//            case SERVEBYSELFCHECKOUT: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " serves by self-check " + this.getServerId();
+//                break;
+//            }
+//            case WAIT: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " waits at server " + this.getServerId();
+//                break;
+//            }
+//            case WAITSELFCHECKOUT: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " waits at self-check " + this.getServerId();
+//                break;
+//            }
+//            case DONESELFCHECKOUT: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " done serving by self-check " + this.getServerId();
+//                break;
+//            }
+//            case DONE: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " done serving by server " + this.getServerId();
+//                break;
+//            }
+//            case LEAVE: {
+//                statement = String.format("%.3f", this.time) + " " + this.id + greedyState + " leaves";
+//                break;
+//            }
+//        }
+//        return statement;
+//    }
 
 
 }
