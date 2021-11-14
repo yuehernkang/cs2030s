@@ -123,10 +123,7 @@ public class Server {
      */
 
     boolean canServe(double time) {
-        boolean result = false;
-        if(this.getServerState()!= ServerState.SERVING && this.nextAvailableTime <= time) {
-            result = true;
-        }
+        boolean result = this.getServerState() != ServerState.SERVING && this.nextAvailableTime <= time;
         return result;
     }
 

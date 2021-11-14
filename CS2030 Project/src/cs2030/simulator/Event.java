@@ -1,4 +1,5 @@
 package cs2030.simulator;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -31,7 +32,7 @@ public class Event {
     private final int serverId;
     private final EventState eventState;
     private final Supplier<Double> serviceTime;
-    private Optional<Double> cache;
+    private ArrayList<Double> cache;
     private final CustomerType customerType;
 
     /**
@@ -49,7 +50,7 @@ public class Event {
         this.serverId = serverId;
         this.eventState = eventState;
         this.serviceTime = serviceTime;
-        this.cache = Optional.empty();
+        this.cache = new ArrayList<>();
         this.customerType = CustomerType.NORMAL;
     }
 
@@ -59,7 +60,17 @@ public class Event {
         this.serverId = serverId;
         this.eventState = eventState;
         this.serviceTime = serviceTime;
-        this.cache = Optional.empty();
+        this.cache = new ArrayList<>();
+        this.customerType = customerType;
+    }
+
+    public Event(int id, double time, int serverId, EventState eventState, Supplier<Double> serviceTime, ArrayList<Double> cache, CustomerType customerType) {
+        this.id = id;
+        this.time = time;
+        this.serverId = serverId;
+        this.eventState = eventState;
+        this.serviceTime = serviceTime;
+        this.cache = cache;
         this.customerType = customerType;
     }
 
@@ -80,6 +91,10 @@ public class Event {
         return this.time + this.getServiceTime();
     }
 
+    public ArrayList<Double> getCache() {
+        return this.cache;
+    }
+
     public double getTime() {
         return this.time;
     }
@@ -92,9 +107,10 @@ public class Event {
     }
 
     public double getServiceTime() {
-        Double v = this.cache.orElseGet(this.serviceTime);
-        cache = Optional.of(v);
-        return v;
+        if (this.cache.isEmpty()) {
+            this.cache.add(this.serviceTime.get());
+        }
+        return this.cache.get(0);
     }
 
     @Override

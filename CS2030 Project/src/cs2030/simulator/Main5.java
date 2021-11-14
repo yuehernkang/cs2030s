@@ -33,18 +33,20 @@ public class Main5 {
         LinkedList<Double> restTime = new LinkedList<>();
         int loopIndex = 1;
         double trackTime = 0;
-        eventQueue.add(new Event(1, 0, 0, EventState.ARRIVAL, randomGenerator::genServiceTime));
+        double genFirstCustomerType = randomGenerator.genCustomerType();
+        CustomerType firstCustomerType = genFirstCustomerType < probOfGreedyCustomer ? CustomerType.GREEDY : CustomerType.NORMAL;
+        eventQueue.add(new Event(1, 0, 0, EventState.ARRIVAL, randomGenerator::genServiceTime, firstCustomerType));
         for (int i = 1; i < numOfCustomers; i++) {
             double time = randomGenerator.genInterArrivalTime();
             double determineCustomerType = randomGenerator.genCustomerType();
             CustomerType customerType = CustomerType.NORMAL;
-            if( determineCustomerType< probOfGreedyCustomer) customerType = CustomerType.GREEDY;
+            if (determineCustomerType < probOfGreedyCustomer) customerType = CustomerType.GREEDY;
             trackTime += time;
             eventQueue.add(new Event(loopIndex + 1, trackTime, 0, EventState.ARRIVAL, randomGenerator::genServiceTime, customerType));
             loopIndex++;
         }
         System.out.println(eventQueue);
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, numOfSelfCheckoutCounters, randomGenerator);
+        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, probOfResting, restTime, numOfSelfCheckoutCounters, randomGenerator);
         s.simulate();
         sc.close();
     }
