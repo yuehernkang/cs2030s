@@ -1,10 +1,11 @@
 //package cs2030.simulator;
 
+import cs2030.simulator.ArrivalEvent;
 import cs2030.simulator.Event;
 import cs2030.simulator.EventComparator;
 import cs2030.simulator.EventState;
+import cs2030.simulator.CustomerType;
 import cs2030.simulator.Simulator;
-
 
 import java.util.*;
 
@@ -28,7 +29,7 @@ public class Main2 {
 
         for (int i = 0; i < arrivalTimes.size(); i++) {
             int finalLoopIndex = loopIndex;
-            eventQueue.add(new Event(loopIndex + 1, arrivalTimes.get(i), 0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex)));
+            eventQueue.add(new ArrivalEvent(loopIndex + 1, arrivalTimes.get(i), 0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex), CustomerType.NORMAL));
             loopIndex++;
         }
 

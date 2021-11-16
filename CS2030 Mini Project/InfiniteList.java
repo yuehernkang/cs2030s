@@ -17,15 +17,15 @@ interface InfiniteList<T> {
         return InfiniteListImpl.iterate(seed, next); 
     }
 
-    // <R> InfiniteList<R> map(Function<? super T, ? extends R> mapper);
-    // InfiniteList<T> filter(Predicate<? super T> predicate);
+    <R> InfiniteList<R> map(Function<? super T, ? extends R> mapper);
+    InfiniteList<T> filter(Predicate<? super T> predicate);
     // void forEach(Consumer<? super T> action);
     // Object[] toArray();
     // InfiniteList<T> limit(long n);
     // long count();
     // <U> U reduce (U identity, BiFunction<U, ? super T, U> accumulator);
     // InfiniteList<T> takeWhile(Predicate<? super T> predicate);
-    // InfiniteList<T> peek();
+    InfiniteList<T> peek();
 
     // boolean isEmpty();
 }

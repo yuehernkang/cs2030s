@@ -1,9 +1,7 @@
 package cs2030.simulator;
 
-import java.io.FileInputStream;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
 
 public class EventHandler {
     private final Event event;
@@ -76,33 +74,28 @@ public class EventHandler {
                 boolean serverRest = this.randomGenerator.genRandomRest() < probOfResting;
                 //There is people waiting for this server
                 if (!this.restTimes.isEmpty()) restTime = this.restTimes.peek();
-                //SERVER CAN REST
-                if(serverRest) {
+                if (this.probOfResting != 1) restTime = this.randomGenerator.genRestPeriod();
+                if (serverRest) {
+                    //SERVER CAN REST
+                    this.restTimes.poll();
+                    this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(restTime));
                     if (!this.serverList.get(serverIndex).queueIsEmpty()) {
-                        this.restTimes.poll();
-//                        e = new Event(e1.getId(), event.getTime() + restTime, e1.getServerId(), EventState.SERVE, e1::getServiceTime, event.getCustomerType());
-                        e = new ServeEvent(e1.getId(), event.getTime() + this.randomGenerator.genRestPeriod(), e1.getServerId(), EventState.SERVE, e1::getServiceTime, event.getCache(), event.getCustomerType());
+                        e = new ServeEvent(e1.getId(), event.getTime() + restTime, e1.getServerId(), EventState.SERVE, e1::getServiceTime, event.getCache(), event.getCustomerType());
                     } else {
                         //No people waiting for this server
-                        this.restTimes.poll();
-//                        this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(restTime));
-                        this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(this.randomGenerator.genRestPeriod()));
                         e = new FinishEvent(event.getId(), event.getTime(), event.getServerId(), EventState.FINISH, event::getServiceTime, event.getCustomerType());
                     }
                 } else {
                     //SERVER CANNOT REST
                     if (!this.serverList.get(serverIndex).queueIsEmpty()) {
-                        this.restTimes.poll();
                         Event tempEvent = this.serverList.get(serverIndex).getQueue().poll();
                         e = new ServeEvent(tempEvent.getId(), event.getTime(), tempEvent.getServerId(), EventState.SERVE, tempEvent::getServiceTime, tempEvent.getCache(), tempEvent.getCustomerType());
                     } else {
                         //No people waiting for this server
-                        this.restTimes.poll();
                         this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(0));
                         e = new FinishEvent(event.getId(), event.getTime(), event.getServerId(), EventState.FINISH, event::getServiceTime, event.getCustomerType());
                     }
                 }
-
                 break;
             default:
                 e = new FinishEvent(event.getId(), event.getTime(), event.getServerId(), EventState.FINISH, event::getServiceTime, event.getCustomerType());
@@ -126,8 +119,11 @@ public class EventHandler {
         ServerType st = this.serverList.get(serverIndex).getServerType();
         EventState es = st == ServerType.HUMAN ? EventState.DONE : EventState.DONESELFCHECKOUT;
         Event e = new Event();
-        if(st == ServerType.HUMAN) {
+        if (st == ServerType.HUMAN) {
             e = new DoneEvent(event.getId(), event.getServiceCompletionTime(), event.getServerId(), es, event::getServiceTime, e.getCache(), event.getCustomerType());
+        }
+        if (st == ServerType.SELFCHECKOUT) {
+            e = new DoneSelfCheckEvent(event.getId(), event.getServiceCompletionTime(), event.getServerId(), es, event::getServiceTime, e.getCache(), event.getCustomerType());
         }
         AtomicReference<Double> waitingTime = new AtomicReference<>((double) 0);
 
@@ -176,7 +172,7 @@ public class EventHandler {
      * @return the next event depending on the available servers
      */
     Event handleArrivalEvent() {
-        Optional<Integer> serverIndex = getFreeServer();
+        Optional<Integer> serverIndex = event.getCustomerType() == CustomerType.NORMAL ? getNormalFreeServer() : getGreedyFreeServer();
         //THERE IS AVAILABLE SERVER
         //THIS FUNCTION CHECKS IF THERE ARE AVAILABLE SERVERS
         return serverIndex.map(id -> {
@@ -184,7 +180,7 @@ public class EventHandler {
             Event e = new Event();
             Server s1 = new Server(s.getId(), ServerState.SERVING, s.getServerType(), s.getQueue(), event.getTime() + event.getServiceTime());
             if (s.getServerType() == ServerType.HUMAN) {
-                e = new ServeEvent(event.getId(), event.getTime(), s.getId(), EventState.SERVE, event::getServiceTime, event.getCache(),event.getCustomerType());
+                e = new ServeEvent(event.getId(), event.getTime(), s.getId(), EventState.SERVE, event::getServiceTime, event.getCache(), event.getCustomerType());
             } else if (s.getServerType() == ServerType.SELFCHECKOUT) {
                 e = new ServeBySelfCheckEvent(event.getId(), event.getTime(), s.getId(), EventState.SERVEBYSELFCHECKOUT, event::getServiceTime, event.getCache(), event.getCustomerType());
             }
@@ -194,7 +190,7 @@ public class EventHandler {
             Event e = new Event();
 
             if (event.getCustomerType() == CustomerType.GREEDY) {
-                Server earliestServer = this.serverList.stream().min(Comparator.comparingInt(Server::getQueueSize)).get();
+                Server earliestServer = getEarliestAvailableServer();
                 e = new WaitEvent(event.getId(), event.getTime(), earliestServer.getId(), EventState.WAIT, event::getServiceTime, event.getCache(), event.getCustomerType());
                 LinkedList<Event> eventQueue = new LinkedList<>(earliestServer.getQueue());
                 eventQueue.add(e);
@@ -209,13 +205,13 @@ public class EventHandler {
                 if (earliestAvailableServer.getId() != 0) {
                     if (earliestAvailableServer.canQueue(this.maxQueueLength) || selfCheckoutAvailable(this.maxQueueLength)) {
                         this.statisticsHandler.set(2, this.statisticsHandler.get(2) + 1);
-                        e = new LeaveEvent(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event::getServiceTime, event.getCache(),event.getCustomerType());
+                        e = new LeaveEvent(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event::getServiceTime, event.getCache(), event.getCustomerType());
                     } else {
                         //ADD TO EARLIEST SERVER'S QUEUE
                         if (earliestAvailableServer.getServerType() == ServerType.HUMAN) {
-                            e = new WaitEvent(event.getId(), event.getTime(), earliestAvailableServer.getId(), EventState.WAIT, event::getServiceTime,event.getCache(), event.getCustomerType());
+                            e = new WaitEvent(event.getId(), event.getTime(), earliestAvailableServer.getId(), EventState.WAIT, event::getServiceTime, event.getCache(), event.getCustomerType());
                         } else if (earliestAvailableServer.getServerType() == ServerType.SELFCHECKOUT) {
-                            e = new WaitAtSelfCheckEvent(event.getId(), event.getTime(), idOfSelfCheckout, EventState.WAITSELFCHECKOUT, event::getServiceTime, event.getCache(),event.getCustomerType());
+                            e = new WaitAtSelfCheckEvent(event.getId(), event.getTime(), idOfSelfCheckout, EventState.WAITSELFCHECKOUT, event::getServiceTime, event.getCache(), event.getCustomerType());
                         }
                         LinkedList<Event> eventQueue = new LinkedList<>(earliestAvailableServer.getQueue());
                         eventQueue.add(e);
@@ -224,7 +220,7 @@ public class EventHandler {
                     }
                 } else {
                     this.statisticsHandler.set(2, this.statisticsHandler.get(2) + 1);
-                    e = new LeaveEvent(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event::getServiceTime, event.getCache(),event.getCustomerType());
+                    e = new LeaveEvent(event.getId(), event.getTime(), event.getServerId(), EventState.LEAVE, event::getServiceTime, event.getCache(), event.getCustomerType());
                 }
             }
 
@@ -235,7 +231,7 @@ public class EventHandler {
     /**
      * Checks if there are any self-checkout counters available
      *
-     * @return if there are any self-checkout counters available
+     * @return true if there are any self-checkout counters available
      */
     boolean selfCheckoutAvailable(int maxQueueLength) {
         int totalQueueSize = this.serverList
@@ -249,20 +245,60 @@ public class EventHandler {
      *
      * @return an optional containing the result
      */
-    Optional<Integer> getFreeServer() {
+    Optional<Integer> getNormalFreeServer() {
         Optional<Integer> serverId = Optional.empty();
-//        return this.serverList
-//                .stream()
-//                .filter(x -> x.canServe(event.getTime()))
-//                .findFirst()
-//                .ifPresent(Optional.of(x.getId() - 1));
+
         for (Server s : serverList) {
             if (s.canServe(event.getTime())) {
-                serverId = Optional.of(s.getId() - 1);
+                serverId = Optional.ofNullable(s.getId() - 1);
                 break;
             }
         }
         return serverId;
+    }
+
+    Optional<Integer> getGreedyFreeServer() {
+        //Check for
+        Optional<Integer> result = Optional.empty();
+        List<Server> list = new ArrayList<>();
+        for (Server s : this.serverList) {
+            if (s.canServe(event.getTime())) {
+                list.add(s);
+            }
+        }
+        list.sort((o1, o2) -> {
+                if(o1.getQueueSize() == o2.getQueueSize()){
+                    //IF QUEUE SAME SIZE, CHOOSE THE FIRST ONE
+                    return Integer.compare(o1.getId(), o2.getId());
+                } else{
+                    return Integer.compare(o1.getQueueSize(), o2.getQueueSize());
+                }
+        });
+        if(!list.isEmpty()){
+            result = Optional.of(list.get(0).getId() - 1);
+        }
+
+        return result;
+
+
+//        this.serverList.stream()
+//                .filter(s -> s.canServe(event.getTime()))
+//                .min((o1, o2) -> {
+//                    if(o1.getQueueSize() == o2.getQueueSize()){
+//                        return Integer.compare(o1.getId(), o2.getId());
+//                    }else {
+//                        return Double.compare(o1.getQueueSize(), o2.getQueueSize());
+//                    }
+//                })
+//                .ifPresentOrElse((s) -> {
+//                            serverId.set(Optional.of(s.getId() - 1));
+//                        },
+//                        () -> {
+//                            serverId.set(Optional.empty());
+//                        });
+//
+//        return serverId.get();
+
     }
 
     boolean findEventInQueue(int eventId, Server s) {

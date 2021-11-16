@@ -1,6 +1,7 @@
 package cs2030.simulator;
 
 import java.util.*;
+import cs2030.simulator.RandomGenerator;
 
 public class Simulator {
     private final int numOfServers;
