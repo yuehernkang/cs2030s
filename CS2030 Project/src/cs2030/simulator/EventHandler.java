@@ -2,6 +2,7 @@ package cs2030.simulator;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
 
 public class EventHandler {
     private final Event event;
@@ -59,9 +60,10 @@ public class EventHandler {
                             s.getQueue().poll();
                         }
                         Server s1 = this.serverList.get(serverIndex);
-                        double serviceTime = s.getQueue().peek().getServiceTime();
-                        s1 = new Server(s1.getId(), ServerState.SERVING, s1.getServerType(), s1.getQueue(), s1.getNextAvailableTime() + serviceTime);
-                        e = new ServeBySelfCheckEvent(s.getQueue().peek().getId(), event.getTime(), s1.getId(), EventState.SERVEBYSELFCHECKOUT, () -> serviceTime, event.getCache(), event.getCustomerType());
+                        Supplier<Double> serviceTime = () -> s.getQueue().peek().getServiceTime();
+
+                        s1 = new Server(s1.getId(), ServerState.SERVING, s1.getServerType(), s1.getQueue(), s1.getNextAvailableTime());
+                        e = new ServeBySelfCheckEvent(s.getQueue().peek().getId(), event.getTime(), s1.getId(), EventState.SERVEBYSELFCHECKOUT, serviceTime, event.getCache(), event.getCustomerType());
                         this.serverList.set(serverIndex, s1);
                         break;
                     } else {
@@ -74,8 +76,8 @@ public class EventHandler {
                 boolean serverRest = this.randomGenerator.genRandomRest() < probOfResting;
                 //There is people waiting for this server
                 if (!this.restTimes.isEmpty()) restTime = this.restTimes.peek();
-                if (this.probOfResting != 1) restTime = this.randomGenerator.genRestPeriod();
                 if (serverRest) {
+                    if (this.probOfResting != 1) restTime = this.randomGenerator.genRestPeriod();
                     //SERVER CAN REST
                     this.restTimes.poll();
                     this.serverList.set(serverIndex, this.serverList.get(serverIndex).releaseServer(restTime));
@@ -190,7 +192,7 @@ public class EventHandler {
             Event e = new Event();
 
             if (event.getCustomerType() == CustomerType.GREEDY) {
-                Server earliestServer = getEarliestAvailableServer();
+                Server earliestServer = getServerForGreedy();
                 e = new WaitEvent(event.getId(), event.getTime(), earliestServer.getId(), EventState.WAIT, event::getServiceTime, event.getCache(), event.getCustomerType());
                 LinkedList<Event> eventQueue = new LinkedList<>(earliestServer.getQueue());
                 eventQueue.add(e);
@@ -310,6 +312,20 @@ public class EventHandler {
             }
         }
         return result;
+    }
+
+    /**
+     * A greedy customer always joins the queue with the fewest customers;
+     * in the case of a tie, he/she breaks the tie by choosing the
+     * first one while scanning from servers 1 to k.
+     * @return
+     */
+    Server getServerForGreedy() {
+        Server s = this.serverList.stream()
+                .sorted(Comparator.comparingInt(Server::getQueueSize))
+                .findFirst()
+                .get();
+        return s;
     }
 
     /**

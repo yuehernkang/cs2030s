@@ -1,4 +1,4 @@
-//package cs2030.simulator;
+package cs2030.simulator;
 
 import cs2030.simulator.ArrivalEvent;
 import cs2030.simulator.Event;

@@ -88,6 +88,10 @@ public class Event {
 
     public EventState getEventState() { return this.eventState; }
 
+    public Supplier<Double> getServiceTimeSupplier() {
+        return this.serviceTime;
+    }
+
     public double getServiceCompletionTime() {
         return this.time + this.getServiceTime();
     }
