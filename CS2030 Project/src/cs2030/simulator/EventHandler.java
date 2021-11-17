@@ -122,6 +122,7 @@ public class EventHandler {
         EventState es = st == ServerType.HUMAN ? EventState.DONE : EventState.DONESELFCHECKOUT;
         Event e = new Event();
         if (st == ServerType.HUMAN) {
+//            e = new DoneEvent(event.getId(), event.getServiceCompletionTime(), event.getServerId(), es, event::getServiceTime, e.getCache(), event.getCustomerType());
             e = new DoneEvent(event.getId(), event.getServiceCompletionTime(), event.getServerId(), es, event::getServiceTime, e.getCache(), event.getCustomerType());
         }
         if (st == ServerType.SELFCHECKOUT) {
@@ -141,12 +142,14 @@ public class EventHandler {
                         if (event.getId() == this.serverList.get(serverIndex).getQueue().get(i).getId()) {
                             waitingTime.set(event.getTime() - this.serverList.get(serverIndex).getQueue().peek().getTime());
                             this.serverList.get(serverIndex).getQueue().poll();
+                            break;
                         }
                     }
                     q = this.serverList.get(serverIndex).getQueue();
                     s = new Server(event.getServerId(), ServerState.SERVING, this.serverList.get(serverIndex).getServerType(), q, event.getTime() + event.getServiceTime());
                     serverList.set(serverIndex, s);
                 }
+                break;
             }
             case SELFCHECKOUT: {
                 for (Server s1 : this.serverList) {
@@ -161,6 +164,7 @@ public class EventHandler {
                         }
                     }
                 }
+                break;
             }
         }
         statisticsHandler.set(0, statisticsHandler.get(0) + waitingTime.get());
