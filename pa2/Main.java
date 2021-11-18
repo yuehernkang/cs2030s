@@ -3,12 +3,8 @@ import java.util.stream.Stream;
 
 class Main {
     private static void main(String[] args) {
-        Stream.iterate(10, x -> x * 10)
-                    .limit(6)
-                    .map(x -> Main.simulate(2030, x))
-                    .forEach(x -> System.out.println(x));
+        Stream.iterate(10, x -> x * 10).limit(6).map(x -> simulate(2030, x)).forEach(x -> System.out.println(x));
     }
-
     static double simulate(int seed, int o){
         Circle c = new Circle(new Point(0.0, 0.0), 1.0);
         long n = Stream.iterate(Rand.of(seed), x -> x.next().next())

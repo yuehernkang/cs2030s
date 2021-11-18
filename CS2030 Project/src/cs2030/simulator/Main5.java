@@ -1,12 +1,11 @@
-package cs2030.simulator;
+//package cs2030.simulator;
 
+import cs2030.simulator.CustomerType;
+import cs2030.simulator.EventComparator;
+import cs2030.simulator.Simulator;
 import cs2030.simulator.ArrivalEvent;
 import cs2030.simulator.Event;
-import cs2030.simulator.EventComparator;
 import cs2030.simulator.EventState;
-import cs2030.simulator.CustomerType;
-import cs2030.simulator.Simulator;
-import cs2030.simulator.RandomGenerator;
 
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -26,7 +25,6 @@ public class Main5 {
         double rho = sc.nextDouble();
         double probOfResting = sc.nextDouble();
         double probOfGreedyCustomer = sc.nextDouble();
-        RandomGenerator randomGenerator = new RandomGenerator(seed, lambda, mu, rho);
 
         sc.nextLine();
 
@@ -46,8 +44,7 @@ public class Main5 {
             eventQueue.add(new ArrivalEvent(loopIndex + 1, trackTime, 0, EventState.ARRIVAL, randomGenerator::genServiceTime, customerType));
             loopIndex++;
         }
-        System.out.println(eventQueue);
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, probOfResting, restTime, numOfSelfCheckoutCounters, randomGenerator);
+        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, probOfResting, restTime, numOfSelfCheckoutCounters, seed, lambda, mu, rho);
         s.simulate();
         sc.close();
     }

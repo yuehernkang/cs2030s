@@ -1,6 +1,7 @@
 package cs2030.simulator;
 
 import java.util.*;
+
 import cs2030.simulator.RandomGenerator;
 
 public class Simulator {
@@ -18,7 +19,7 @@ public class Simulator {
         this.maxQueueLength = 1;
         this.restTimes = new LinkedList<>();
         this.numOfSelfCheckoutCounters = 0;
-        this.randomGenerator = new RandomGenerator(0,0.0,0.0,0.0);
+        this.randomGenerator = new RandomGenerator(0, 0.0, 0.0, 0.0);
         this.probOfResting = 1;
     }
 
@@ -28,7 +29,7 @@ public class Simulator {
         this.maxQueueLength = maxQueueLength;
         this.restTimes = new LinkedList<>();
         this.numOfSelfCheckoutCounters = 0;
-        this.randomGenerator = new RandomGenerator(0,0.0,0.0,0.0);
+        this.randomGenerator = new RandomGenerator(0, 0.0, 0.0, 0.0);
         this.probOfResting = 1.0;
     }
 
@@ -38,7 +39,7 @@ public class Simulator {
         this.maxQueueLength = maxQueueLength;
         this.restTimes = restTimes;
         this.numOfSelfCheckoutCounters = numOfSelfCheckoutCounters;
-        this.randomGenerator = new RandomGenerator(0,0.0,0.0,0.0);
+        this.randomGenerator = new RandomGenerator(0, 0.0, 0.0, 0.0);
         this.probOfResting = 1.0;
     }
 
@@ -52,6 +53,16 @@ public class Simulator {
         this.probOfResting = probOfResting;
     }
 
+    public Simulator(int numOfServers, PriorityQueue<Event> eventQueue, int maxQueueLength, double probOfResting, LinkedList<Double> restTimes, int numOfSelfCheckoutCounters, int seed, double lambda, double mu, double rho) {
+        this.numOfServers = numOfServers;
+        this.eventQueue = eventQueue;
+        this.maxQueueLength = maxQueueLength;
+        this.restTimes = restTimes;
+        this.numOfSelfCheckoutCounters = numOfSelfCheckoutCounters;
+        this.randomGenerator = new RandomGenerator(seed, lambda, mu, rho);
+        this.probOfResting = probOfResting;
+    }
+
     public void simulate() {
         List<Server> serverList;
         List<Double> statisticsHandler = initStatistics();
@@ -62,7 +73,7 @@ public class Simulator {
             EventHandler eventHandler = new EventHandler(event, serverList, statisticsHandler, this.maxQueueLength,
                     this.restTimes, this.numOfSelfCheckoutCounters, this.randomGenerator, this.probOfResting);
             Event latestEvent = eventHandler.handleEvent();
-            if(latestEvent.getEventState() != EventState.FINISH){
+            if (latestEvent.getEventState() != EventState.FINISH) {
                 eventQueue.add(latestEvent);
             }
         }
@@ -70,7 +81,7 @@ public class Simulator {
                 + " " + statisticsHandler.get(2).intValue() + "]");
     }
 
-     private List<Double> initStatistics() {
+    private List<Double> initStatistics() {
         List<Double> statisticsHandler = new ArrayList<>();
         double initValue = 0.0;
         /*
@@ -85,14 +96,13 @@ public class Simulator {
     }
 
 
-
     private List<Server> initServer() {
         List<Server> serverList = new ArrayList<>();
         //INITIALIZE SERVER LIST
         for (int i = 0; i < this.numOfServers; i++) {
             serverList.add(new Server(i + 1));
         }
-        for(int j = 0; j < this.numOfSelfCheckoutCounters; j++){
+        for (int j = 0; j < this.numOfSelfCheckoutCounters; j++) {
             serverList.add(new Server(serverList.size() + 1, ServerType.SELFCHECKOUT));
         }
         return serverList;
