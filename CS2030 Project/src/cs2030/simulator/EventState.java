@@ -1,8 +1,10 @@
 package cs2030.simulator;
+
 /**
- *  EventState
+ *  EventState.
  *  Represents the possible states Event objects
  */
+
 public enum EventState {
     ARRIVAL,
     SERVE,

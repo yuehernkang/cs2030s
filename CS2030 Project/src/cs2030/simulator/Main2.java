@@ -7,7 +7,11 @@ import cs2030.simulator.EventState;
 import cs2030.simulator.CustomerType;
 import cs2030.simulator.Simulator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
 
 public class Main2 {
     public static void main(String[] args) {
@@ -29,11 +33,13 @@ public class Main2 {
 
         for (int i = 0; i < arrivalTimes.size(); i++) {
             int finalLoopIndex = loopIndex;
-            eventQueue.add(new ArrivalEvent(loopIndex + 1, arrivalTimes.get(i), 0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex), CustomerType.NORMAL));
+            eventQueue.add(new ArrivalEvent(loopIndex + 1, arrivalTimes.get(i),
+                    0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex),
+                    CustomerType.NORMAL));
             loopIndex++;
         }
 
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength);
+        Simulator s = new Simulator(arrivalTimes.size(), numOfServers, eventQueue, maxQueueLength);
         s.simulate();
         sc.close();
 

@@ -13,7 +13,6 @@ public class InfiniteListImpl<T> implements InfiniteList<T> {
     }
 
     /**
-     * 
      * @param <T>
      * @param supply supplies the function to generate the next values
      * @return
@@ -22,20 +21,40 @@ public class InfiniteListImpl<T> implements InfiniteList<T> {
         return new InfiniteListImpl<T>(Lazy.of(supply), () -> InfiniteListImpl.generate(supply));
     }
 
-    static <T> InfiniteListImpl<T> iterate(T seed, Function<T,T> next) {
+    static <T> InfiniteListImpl<T> iterate(T seed, Function<T, T> next) {
         Lazy<T> newHead = Lazy.ofNullable(seed);
-        Supplier<InfiniteListImpl<T>> newTail = () -> 
-            InfiniteListImpl.<T>iterate(next.apply(seed), next);
+        Supplier<InfiniteListImpl<T>> newTail = () ->
+                InfiniteListImpl.<T>iterate(next.apply(seed), next);
         return new InfiniteListImpl<T>(newHead, newTail);
     }
 
     public InfiniteListImpl<T> filter(Predicate<? super T> predicate) {
         Lazy<T> newHead = this.head.filter(predicate);
-        Supplier<InfiniteListImpl<T>> newTail = () -> 
-            this.tail.get().filter(predicate);
+        Supplier<InfiniteListImpl<T>> newTail = () ->
+                this.tail.get().filter(predicate);
 
         return new InfiniteListImpl<T>(newHead, newTail);
     }
+
+    public InfiniteList<T> limit(long n) {
+        if (n < 1) {
+            return new EmptyList<T>();
+        } else if (n == 1) {
+            Supplier<InfiniteList<T>> newTail = () -> this.head.isEmpty() ? this.tail.get().limit(n)
+                    : new EmptyList<T>();
+            return new InfiniteListImpl<T>(this.head, newTail);
+        } else {
+            Lazy<T> newHead = this.head;
+            Supplier<InfiniteList<T>> newTail = () -> this.head.isEmpty() ? this.tail.get().limit(n)
+                    : this.tail.get().limit(n - 1);
+            return new InfiniteListImpl<T>(newHead, newTail);
+        }
+    }
+
+    boolean isEmpty() {
+
+    }
+
 
 
     public <R> InfiniteListImpl<R> map(Function<? super T, ? extends R> mapper) {
@@ -46,7 +65,10 @@ public class InfiniteListImpl<T> implements InfiniteList<T> {
 
     public InfiniteList<T> peek() {
         this.head.get().map(value -> value)
-            .ifPresentOrElse(value -> {System.out.println(value);}, ()-> {});
+                .ifPresentOrElse(value -> {
+                    System.out.println(value);
+                }, () -> {
+                });
         return this.tail.get();
     }
 }

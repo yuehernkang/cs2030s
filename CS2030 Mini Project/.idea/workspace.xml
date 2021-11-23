@@ -3,11 +3,39 @@
   <component name="ChangeListManager">
     <list default="true" id="da2a46ab-8f46-4623-8dc4-f9b8c2cbc380" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InfiniteList.java" beforeDir="false" afterPath="$PROJECT_DIR$/InfiniteList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InfiniteListImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/InfiniteListImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/Main4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/EventHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/EventHandler$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/EventHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/EventHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Main5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Simulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/out/production/CS2030 Project/cs2030/simulator/Simulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ArrivalEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ArrivalEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/CustomerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/CustomerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/DoneEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/DoneEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/DoneSelfCheckEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/DoneSelfCheckEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventState.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/EventState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/FinishEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/FinishEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/LeaveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/LeaveEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main4.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Main5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ServeBySelfCheckEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ServeBySelfCheckEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ServeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ServeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ServerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/ServerType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/Simulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/WaitAtSelfCheckEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/WaitAtSelfCheckEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/WaitEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CS2030 Project/src/cs2030/simulator/WaitEvent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

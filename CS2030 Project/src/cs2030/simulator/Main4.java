@@ -1,4 +1,4 @@
-package cs2030.simulator;
+//package cs2030.simulator;
 
 import cs2030.simulator.ArrivalEvent;
 import cs2030.simulator.Event;
@@ -17,7 +17,6 @@ public class Main4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        //number of servers, the number of self-checkout counters, the maximum queue length and the number of customers N
         int numOfServers = sc.nextInt();
         int numOfSelfCheckoutCounters = sc.nextInt();
         int maxQueueLength = sc.nextInt();
@@ -38,7 +37,9 @@ public class Main4 {
 
         for (int i = 0; i < numOfCustomers; i++) {
             int finalLoopIndex = loopIndex;
-            eventQueue.add(new ArrivalEvent(i + 1, arrivalTimes.get(i), 0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex), CustomerType.NORMAL));
+            eventQueue.add(new ArrivalEvent(i + 1, arrivalTimes.get(i), 0,
+                    EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex),
+                    CustomerType.NORMAL));
             loopIndex++;
         }
 
@@ -46,7 +47,8 @@ public class Main4 {
             restTime.add(sc.nextDouble());
         }
 
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, numOfSelfCheckoutCounters);
+        Simulator s = new Simulator(numOfCustomers, numOfServers, eventQueue, maxQueueLength,
+                restTime, numOfSelfCheckoutCounters);
         s.simulate();
         sc.close();
     }

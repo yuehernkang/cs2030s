@@ -36,7 +36,9 @@ public class Main3 {
 
         for (int i = 0; i < numOfCustomers; i++) {
             int finalLoopIndex = loopIndex;
-            eventQueue.add(new ArrivalEvent(i + 1, arrivalTimes.get(i), 0, EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex), CustomerType.NORMAL));
+            eventQueue.add(new ArrivalEvent(i + 1, arrivalTimes.get(i), 0,
+                    EventState.ARRIVAL, () -> serviceTimes.get(finalLoopIndex),
+                    CustomerType.NORMAL));
             loopIndex++;
         }
 
@@ -44,7 +46,8 @@ public class Main3 {
             restTime.add(sc.nextDouble());
         }
 
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, restTime, 0);
+        Simulator s = new Simulator(numOfCustomers, numOfServers, eventQueue,
+                maxQueueLength, restTime, 0);
         s.simulate();
         sc.close();
     }

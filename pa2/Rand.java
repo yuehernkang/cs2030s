@@ -15,11 +15,6 @@ class Rand<T> {
         this.func = function;
     }
 
-    Rand(int seed, Optional<Function<Integer, T>> func) {
-        this.seed = seed;
-        this.func = func.get();
-    }
-
     public static Rand<Integer>  of(int seed) {
         return new Rand<>(seed, x -> x);
     }

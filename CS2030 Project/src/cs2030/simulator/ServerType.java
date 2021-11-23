@@ -1,7 +1,8 @@
 package cs2030.simulator;
+
 /**
- *  EventState
- *  Represents the possible states Server objects
+ * Server State.
+ * Represents the possible states Server objects
  */
 public enum ServerType {
     HUMAN,

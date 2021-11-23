@@ -20,11 +20,12 @@ public class Main1 {
         int loopIndex = 0;
 
         while (sc.hasNextDouble()) {
-            eventQueue.add(new ArrivalEvent(loopIndex + 1, sc.nextDouble(), 0, EventState.ARRIVAL, () -> 1.0, CustomerType.NORMAL));
+            eventQueue.add(new ArrivalEvent(loopIndex + 1, sc.nextDouble(),
+                    0, EventState.ARRIVAL, () -> 1.0, CustomerType.NORMAL));
             loopIndex++;
         }
 
-        Simulator s = new Simulator(numOfServers, eventQueue);
+        Simulator s = new Simulator(eventQueue.size(), numOfServers, eventQueue);
         s.simulate();
         sc.close();
     }

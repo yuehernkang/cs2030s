@@ -1,5 +1,6 @@
 //package cs2030.simulator;
 
+
 import cs2030.simulator.CustomerType;
 import cs2030.simulator.EventComparator;
 import cs2030.simulator.Simulator;
@@ -28,23 +29,8 @@ public class Main5 {
 
         sc.nextLine();
 
-        PriorityQueue<Event> eventQueue = new PriorityQueue<>(new EventComparator());
-        LinkedList<Double> restTime = new LinkedList<>();
-        int loopIndex = 1;
-        double trackTime = 0;
-        double genFirstCustomerType = randomGenerator.genCustomerType();
-        CustomerType firstCustomerType = genFirstCustomerType < probOfGreedyCustomer ? CustomerType.GREEDY : CustomerType.NORMAL;
-        eventQueue.add(new ArrivalEvent(1, 0, 0, EventState.ARRIVAL, randomGenerator::genServiceTime, firstCustomerType));
-        for (int i = 1; i < numOfCustomers; i++) {
-            double time = randomGenerator.genInterArrivalTime();
-            double determineCustomerType = randomGenerator.genCustomerType();
-            CustomerType customerType = CustomerType.NORMAL;
-            if (determineCustomerType < probOfGreedyCustomer) customerType = CustomerType.GREEDY;
-            trackTime += time;
-            eventQueue.add(new ArrivalEvent(loopIndex + 1, trackTime, 0, EventState.ARRIVAL, randomGenerator::genServiceTime, customerType));
-            loopIndex++;
-        }
-        Simulator s = new Simulator(numOfServers, eventQueue, maxQueueLength, probOfResting, restTime, numOfSelfCheckoutCounters, seed, lambda, mu, rho);
+        Simulator s = new Simulator(numOfCustomers, numOfServers, maxQueueLength, probOfResting,
+                probOfGreedyCustomer, numOfSelfCheckoutCounters, seed, lambda, mu, rho);
         s.simulate();
         sc.close();
     }
